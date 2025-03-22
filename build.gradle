@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.modula'
-version = '1.0.0'
+version = '1.0.1'
 
 java {
 	toolchain {
@@ -47,6 +47,53 @@ jar {
 	enabled = true
 }
 
+
+def ensureTokenHasReadPackages() {
+	try {
+		def proc = "gh auth status".execute()
+		proc.waitFor()
+		def statusOutput = proc.in.text
+		if (!statusOutput.contains("write:packages")) {
+			throw new GradleException()
+		}
+	} catch(Exception e) {
+		logger.warn("Failed to check token scopes via 'gh auth status'", e)
+		throw new GradleException("❌ Token does not have the required 'write:packages' scope. Please run: gh auth refresh --scopes write:packages")
+	}
+}
+
+def getGithubToken() {
+	ensureTokenHasReadPackages()
+	def token = System.getenv("GITHUB_TOKEN")
+	if (!token) {
+		try {
+			def proc = "gh auth token".execute()
+			proc.waitFor()
+			token = proc.in.text.trim()
+		} catch (Exception e) {
+			logger.warn("Failed to get GitHub token via gh", e)
+		}
+	}
+	println("Token: ${token[0..3]}${'*' * (token.length() - 9)}${token[-5..-1]}")
+	return token ?: ""
+}
+
+def getGithubUser() {
+	def user = System.getenv("GITHUB_USER")
+	if (!user) {
+		try {
+			def proc = "gh api user --jq .login".execute()
+			proc.waitFor()
+			user = proc.in.text.trim()
+		} catch (Exception e) {
+			logger.warn("Failed to get GitHub username via gh", e)
+		}
+	}
+	println("Username: ${user}")
+	return user ?: ""
+}
+
+
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
@@ -77,8 +124,8 @@ publishing {
 			url = uri("https://maven.pkg.github.com/ERP-Modula/common-lib")
 
 			credentials {
-				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USER")
-				password = project.findProperty("gpr.key")  ?: System.getenv("GITHUB_TOKEN")
+				username = getGithubUser()
+				password = getGithubToken()
 			}
 		}
 	}
