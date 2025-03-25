@@ -13,19 +13,20 @@ public class ModuleAction {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
+
     private String name;
     private String label;
     private String description;
+    private String category;
 
-    @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OutputParametersInterface> outputOutputParametersInterfaces;
+    @ElementCollection
+    private List<String> scopes;
 
-    @OneToMany(mappedBy = "action", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "output_parameters_interface_id")
+    private List<OutputInterface> outputInterface;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "input_parameter_id")
     private List<InputParameter> inputParameters;
-
-    @ManyToOne
-    @JoinColumn(name = "module_configuration_id")
-    private ModuleConfiguration module;
-
-    // Getters and Setters
 }

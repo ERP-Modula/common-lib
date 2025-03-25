@@ -1,11 +1,13 @@
 package com.modula.common.domain.moduleconfiguration;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Getter
 public class InputParameter {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -13,12 +15,17 @@ public class InputParameter {
 
     private String name;
     private String label;
-    private boolean required;
+    private Boolean required;
     private String help;
 
     @Enumerated(EnumType.STRING)
-    private ParamTypeEnum type;
+    private ParamType type;
 
-    @OneToMany(mappedBy = "parameter", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "nested_field_option_id")
     private List<NestedFieldOption> options;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "parent_input_parameter_id")
+    private List<InputParameter> spec;
 }

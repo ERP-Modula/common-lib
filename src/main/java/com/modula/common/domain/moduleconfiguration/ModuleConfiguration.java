@@ -10,6 +10,7 @@ import java.util.UUID;
 @Entity
 @Getter
 public class ModuleConfiguration {
+
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
@@ -17,7 +18,7 @@ public class ModuleConfiguration {
     private String label;
     private String description;
     private String iconPath;
-    private boolean isPublic;
+    private Boolean isPublic;
     private String theme;
 
     @ElementCollection
@@ -29,5 +30,5 @@ public class ModuleConfiguration {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "module_api_handler_id")
-    private List<Trigger> triggers;
+    private List<ModuleTrigger> triggers;
 }

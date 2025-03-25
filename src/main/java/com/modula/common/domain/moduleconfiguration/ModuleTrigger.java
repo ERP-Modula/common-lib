@@ -2,10 +2,12 @@ package com.modula.common.domain.moduleconfiguration;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @Entity
 public class ModuleTrigger {
     @Id
@@ -15,11 +17,16 @@ public class ModuleTrigger {
     private String name;
     private String label;
     private String description;
+    private String category;
 
-    @OneToMany(mappedBy = "trigger", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "module_id")
-    private List<OutputParametersInterface> interfaces;
+    @ElementCollection
+    private List<String> scopes;
 
-    @OneToMany(mappedBy = "trigger", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<InputParameter> parameters;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "output_parameters_interface_id")
+    private List<OutputInterface> outputInterface;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "input_parameter_id")
+    private List<InputParameter> inputParameters;
 }
