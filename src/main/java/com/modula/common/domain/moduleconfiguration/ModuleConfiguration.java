@@ -21,6 +21,9 @@ public class ModuleConfiguration {
     private Boolean isPublic;
     private String theme;
 
+    @Enumerated(EnumType.STRING)
+    private AuthType authType;
+
     @ElementCollection
     private List<String> categories;
 
