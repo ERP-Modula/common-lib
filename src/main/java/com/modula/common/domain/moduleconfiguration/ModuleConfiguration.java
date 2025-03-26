@@ -20,7 +20,7 @@ public class ModuleConfiguration {
     private String iconPath;
     private Boolean isPublic;
     private String theme;
-
+    private String authorId;
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 

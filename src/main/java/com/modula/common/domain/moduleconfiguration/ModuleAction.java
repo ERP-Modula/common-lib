@@ -18,6 +18,7 @@ public class ModuleAction {
     private String label;
     private String description;
     private String category;
+    private String endpointUrl;
 
     @ElementCollection
     private List<String> scopes;
