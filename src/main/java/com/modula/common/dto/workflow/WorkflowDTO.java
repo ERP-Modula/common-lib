@@ -1,7 +1,6 @@
 package com.modula.common.dto.workflow;
 
 import lombok.Data;
-import com.modula.common.dto.StepDTO;
 
 import java.util.ArrayList;
 import java.util.List;
