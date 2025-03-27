@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 public class ModuleTrigger {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Enumerated(EnumType.STRING)
     private TriggerType type;
@@ -29,10 +29,10 @@ public class ModuleTrigger {
     private List<String> scopes;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "output_parameters_interface_id")
+//    @JoinColumn(name = "output_parameters_interface_id")
     private List<OutputInterface> outputInterface;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "input_parameter_id")
+//    @JoinColumn(name = "input_parameter_id")
     private List<InputParameter> inputParameters;
 }

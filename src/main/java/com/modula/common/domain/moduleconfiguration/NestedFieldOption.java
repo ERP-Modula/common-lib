@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 public class NestedFieldOption {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String label;
@@ -22,6 +22,6 @@ public class NestedFieldOption {
     private Boolean isDefault;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "input_parameter_id")
+//    @JoinColumn(name = "input_parameter_id")
     private List<InputParameter> nested;
 }

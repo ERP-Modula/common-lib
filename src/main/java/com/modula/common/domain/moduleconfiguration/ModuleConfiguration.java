@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ModuleConfiguration {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private String label;
@@ -28,10 +28,10 @@ public class ModuleConfiguration {
     private List<String> categories;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "module_api_handler_id")
+//    @JoinColumn(name = "module_api_handler_id")
     private List<ModuleAction> actions;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "module_api_handler_id")
+//    @JoinColumn(name = "module_api_handler_id")
     private List<ModuleTrigger> triggers;
 }
