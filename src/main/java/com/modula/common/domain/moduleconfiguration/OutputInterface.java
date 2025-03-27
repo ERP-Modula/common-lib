@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Table(name = "output_interface")
 public class OutputInterface {
     @Id
     @GeneratedValue(generator = "UUID")
