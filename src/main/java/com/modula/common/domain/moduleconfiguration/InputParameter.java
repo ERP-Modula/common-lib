@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 public class InputParameter {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String name;
@@ -22,10 +22,10 @@ public class InputParameter {
     private ParamType type;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "nested_field_option_id")
+//    @JoinColumn(name = "nested_field_option_id")
     private List<NestedFieldOption> options;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "parent_input_parameter_id")
+//    @JoinColumn(name = "parent_input_parameter_id")
     private List<InputParameter> spec;
 }

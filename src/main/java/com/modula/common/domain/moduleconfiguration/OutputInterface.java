@@ -7,10 +7,9 @@ import java.util.List;
 
 @Entity
 @Getter
-@Table(name = "output_interface")
 public class OutputInterface {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String name;
@@ -20,6 +19,6 @@ public class OutputInterface {
     private boolean time;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "output_interface_id")
+//    @JoinColumn(name = "output_interface_id")
     private List<OutputInterface> spec;
 }
