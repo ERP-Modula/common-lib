@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Getter
@@ -13,12 +14,16 @@ public class ModuleTrigger {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-
+    @Enumerated(EnumType.STRING)
+    private TriggerType type;
     private String name;
     private String label;
     private String description;
     private String category;
     private String endpointUrl;
+    @Embedded
+    private TriggerSettings triggerSettings;
+    private Map<String, Object> settings;
 
     @ElementCollection
     private List<String> scopes;
