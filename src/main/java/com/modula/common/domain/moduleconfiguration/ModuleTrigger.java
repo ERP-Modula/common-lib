@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Getter
@@ -21,18 +20,16 @@ public class ModuleTrigger {
     private String description;
     private String category;
     private String endpointUrl;
+
     @Embedded
-    private TriggerSettings triggerSettings;
-    private Map<String, Object> settings;
+    private SchedulerSettings schedulerSettings;
 
     @ElementCollection
     private List<String> scopes;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "output_parameters_interface_id")
     private List<OutputInterface> outputInterface;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "input_parameter_id")
     private List<InputParameter> inputParameters;
 }

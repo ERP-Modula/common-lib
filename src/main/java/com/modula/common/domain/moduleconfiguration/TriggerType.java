@@ -7,6 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum TriggerType {
     WEBHOOK,
-    POLLING,
-    MANUAL
+    POLLING
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Embeddable
 @Getter
 @NoArgsConstructor
-public class TriggerSettings {
+public class SchedulerSettings {
     @Nullable
     private Long interval;
     @Nullable

@@ -22,10 +22,8 @@ public class InputParameter {
     private ParamType type;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "nested_field_option_id")
     private List<NestedFieldOption> options;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "parent_input_parameter_id")
     private List<InputParameter> spec;
 }

@@ -28,10 +28,8 @@ public class ModuleConfiguration {
     private List<String> categories;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "module_api_handler_id")
     private List<ModuleAction> actions;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "module_api_handler_id")
     private List<ModuleTrigger> triggers;
 }

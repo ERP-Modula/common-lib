@@ -20,14 +20,15 @@ public class ModuleAction {
     private String category;
     private String endpointUrl;
 
+    @Embedded
+    private SchedulerSettings schedulerSettings;
+
     @ElementCollection
     private List<String> scopes;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "output_parameters_interface_id")
     private List<OutputInterface> outputInterface;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "input_parameter_id")
     private List<InputParameter> inputParameters;
 }

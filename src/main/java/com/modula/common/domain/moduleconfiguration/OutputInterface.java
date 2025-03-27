@@ -19,6 +19,5 @@ public class OutputInterface {
     private boolean time;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "output_interface_id")
     private List<OutputInterface> spec;
 }
