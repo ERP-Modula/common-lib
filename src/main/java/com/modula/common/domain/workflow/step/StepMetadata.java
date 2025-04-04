@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class StepMetadata {
     @Embedded
     private Location location;
-    @Embedded
-    private Restore restore;
+//    @Embedded
+//    private Restore restore;
 }

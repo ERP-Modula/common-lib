@@ -30,11 +30,11 @@ public class Step {
 
     public void updateLocation(double newX, double newY) {
         Location newLocation = new Location(newX, newY);
-        this.metadata = new StepMetadata(newLocation, this.metadata.getRestore());
+        this.metadata = new StepMetadata(newLocation);
     }
 
     public void updateRestore(Map<String, String> newParameters) {
         Restore newRestore = new Restore(newParameters);
-        this.metadata = new StepMetadata(this.metadata.getLocation(), newRestore);
+        this.metadata = new StepMetadata(this.metadata.getLocation());
     }
 }
