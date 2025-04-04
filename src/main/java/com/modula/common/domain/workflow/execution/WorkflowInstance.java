@@ -13,7 +13,7 @@ import java.util.UUID;
 @Entity
 public class WorkflowInstance {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private UUID workflowId;
     private UUID currentStepId;
@@ -21,8 +21,8 @@ public class WorkflowInstance {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Step> steps;
 
-    @ElementCollection
-    private Map<String, IntegrationOutputObject> context;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<IntegrationOutputObject> context;
 
     public UUID getFirstStepId() {
         Optional<Step> o = steps.stream().filter(s -> s.getPrevStepId().isEmpty()).findAny();

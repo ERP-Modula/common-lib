@@ -1,17 +1,19 @@
 package com.modula.common.domain.workflow.execution;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
 
 @Data
-@Embeddable
+@Entity
 public class IntegrationOutputObject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    private String moduleName;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OutputInterfaceField> fields;
