@@ -19,7 +19,7 @@ public class WorkflowInstance {
     private UUID currentStepId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "workflow_id")
+    @JoinColumn(name = "workflow_instance_id")
     private List<Step> steps;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
