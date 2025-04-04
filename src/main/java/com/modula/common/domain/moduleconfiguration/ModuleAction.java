@@ -20,9 +20,6 @@ public class ModuleAction {
     private String category;
     private String endpointUrl;
 
-    @Embedded
-    private SchedulerSettings schedulerSettings;
-
     @ElementCollection
     private List<String> scopes;
 
