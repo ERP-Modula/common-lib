@@ -33,8 +33,14 @@ public class Workflow {
     private String updatedByUserId;
     private int executionCount;
     private ZonedDateTime lastExecution;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "workflow_id")
+    //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+//    @JoinColumn(name = "workflow_id")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "workflow_step_mapping",
+            joinColumns = @JoinColumn(name = "workflow_id"),
+            inverseJoinColumns = @JoinColumn(name = "step_id")
+    )
     private final List<Step> steps = new ArrayList<>();
 
     //    TODO доделать остальные поля

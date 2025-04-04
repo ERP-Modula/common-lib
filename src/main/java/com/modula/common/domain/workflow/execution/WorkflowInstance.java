@@ -18,8 +18,14 @@ public class WorkflowInstance {
     private UUID workflowId;
     private UUID currentStepId;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "workflow_instance_id")
+    //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "workflow_instance_id")
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "workflow_instance_step_mapping",
+            joinColumns = @JoinColumn(name = "workflow_instance_id"),
+            inverseJoinColumns = @JoinColumn(name = "step_id")
+    )
     private List<Step> steps;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
