@@ -20,9 +20,9 @@ public class Step {
 //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
     private String source;
     @ElementCollection
-    private List<String> prevStepId;
+    private List<UUID> prevStepId;
     @ElementCollection
-    private List<String> nextStepId;
+    private List<UUID> nextStepId;
     @Embedded
     private StepMetadata metadata;
     @ElementCollection
