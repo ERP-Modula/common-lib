@@ -1,6 +1,5 @@
-package com.modula.common.domain.moduleconfiguration.provider.impl;
+package com.modula.common.domain.moduleconfiguration;
 
-import com.modula.common.domain.moduleconfiguration.provider.Provider;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

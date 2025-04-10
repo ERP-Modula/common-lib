@@ -1,7 +1,5 @@
-package com.modula.common.domain.moduleconfiguration.provider;
+package com.modula.common.domain.moduleconfiguration;
 
-import com.modula.common.domain.moduleconfiguration.AuthType;
-import com.modula.common.domain.moduleconfiguration.ModuleConfiguration;
 import jakarta.persistence.*;
 import lombok.Data;
 
