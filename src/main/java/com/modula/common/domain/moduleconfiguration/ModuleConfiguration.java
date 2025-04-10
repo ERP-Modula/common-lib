@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +27,10 @@ public class ModuleConfiguration {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "provider_id")
     private Provider provider;
+
+    @ElementCollection
+    @CollectionTable(name = "scope")
+    private Set<String> scopes;
 
     @ElementCollection
     private List<String> categories;

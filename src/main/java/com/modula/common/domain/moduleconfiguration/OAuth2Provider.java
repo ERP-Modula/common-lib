@@ -13,7 +13,7 @@ import java.util.Map;
 public class OAuth2Provider extends Provider {
     @Column(name = "client_id", nullable = false)
     private String clientId;
-    @Column(name = "client_id", nullable = false)
+    @Column(name = "client_secret", nullable = false)
     private String clientSecret;
     @Column(name = "code_uri", nullable = false)
     private String codeUri;
