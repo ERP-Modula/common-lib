@@ -1,14 +1,14 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.modula.common.domain.moduleconfiguration.provider.Provider;
 import jakarta.persistence.*;
-import lombok.Getter;
-import org.springframework.scheduling.Trigger;
+import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Getter
+@Data
 public class ModuleConfiguration {
 
     @Id
@@ -23,6 +23,10 @@ public class ModuleConfiguration {
     private String authorId;
     @Enumerated(EnumType.STRING)
     private AuthType authType;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "provider_id")
+    private Provider provider;
 
     @ElementCollection
     private List<String> categories;
