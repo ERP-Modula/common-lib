@@ -22,6 +22,6 @@ public class Provider {
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 
-    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL)
-    private List<ModuleConfiguration> moduleConfigurations;
+//    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL)
+//    private List<ModuleConfiguration> moduleConfigurations;
 }
