@@ -4,6 +4,7 @@ import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -17,9 +18,12 @@ public class WorkflowInstance {
     private UUID id;
     private UUID workflowId;
     private UUID currentStepId;
+    private Boolean isRoot;
+    private Date startTime;
 
-    //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JoinColumn(name = "workflow_instance_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkflowInstance> sub;
+
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "workflow_instance_step_mapping",

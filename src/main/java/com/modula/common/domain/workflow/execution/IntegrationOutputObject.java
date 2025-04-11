@@ -14,6 +14,7 @@ public class IntegrationOutputObject {
     private UUID id;
 
     private String moduleName;
+    private UUID stepId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OutputInterfaceField> fields;
