@@ -20,6 +20,7 @@ public class WorkflowInstance {
     private UUID currentStepId;
     private Boolean isRoot;
     private Date startTime;
+    private Boolean isDone = false;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkflowInstance> sub;
