@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class WorkflowInstance {
     private UUID workflowId;
     private UUID currentStepId;
     private Boolean isRoot;
-    private Date startTime;
+    private Timestamp startTime;
     private Boolean isDone = false;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
