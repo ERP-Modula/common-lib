@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.modula'
-version = '1.0.28'
+version = '1.0.29'
 
 java {
 	toolchain {
@@ -33,7 +33,8 @@ dependencies {
 
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
-}
+
+	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'}
 
 tasks.named('test') {
 	useJUnitPlatform()
