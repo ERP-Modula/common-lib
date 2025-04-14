@@ -32,10 +32,8 @@ public class Workflow {
     private ZonedDateTime lastEdit;
     private String updatedByUserId;
     private int executionCount;
-    private int currInstancesCount;
     private ZonedDateTime lastExecution;
-    //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-//    @JoinColumn(name = "workflow_id")
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "workflow_step_mapping",

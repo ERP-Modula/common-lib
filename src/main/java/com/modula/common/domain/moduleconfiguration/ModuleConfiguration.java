@@ -29,10 +29,6 @@ public class ModuleConfiguration {
     private Provider provider;
 
     @ElementCollection
-    @CollectionTable(name = "scope")
-    private Set<String> scopes;
-
-    @ElementCollection
     private List<String> categories;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
