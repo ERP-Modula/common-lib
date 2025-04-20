@@ -24,8 +24,7 @@ public record ResponseEmailBody(String subject, List<String> from, String body, 
             throws MessagingException, IOException {
         if (part.isMimeType("text/plain")) {
             textCollector.append((String) part.getContent());
-        } else if (part.isMimeType("multipart/*") && part.getContent() instanceof Multipart) {
-            Multipart multiPart = (Multipart) part.getContent();
+        } else if (part.isMimeType("multipart/*") && part.getContent() instanceof Multipart multiPart) {
             for (int i = 0; i < multiPart.getCount(); i++) {
                 collectTextFromMessage(textCollector, multiPart.getBodyPart(i));
             }

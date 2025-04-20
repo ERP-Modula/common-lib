@@ -15,12 +15,6 @@ public class ImapReader {
     private final String imapHost;
     private final Store store;
 
-    public static void main(String[] args) throws MessagingException {
-        ImapReader reader = new ImapReader("imap.gmail.com");
-        List<ResponseEmailBody> messages = reader.getAllResponseEmailBodies("malyshev.2005n@gmail.com", "eand sulf cndf ukoh");
-        System.out.println(messages.get(0));
-    }
-
     public ImapReader(String imapHost) throws NoSuchProviderException {
         this.imapHost = imapHost;
         store = Session.getInstance(getImapProperties()).getStore("imaps");

@@ -1,7 +1,6 @@
 package com.modula.common.email;
 
 import com.modula.common.email.dto.EmailBody;
-import com.modula.common.email.dto.EmailBodyType;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,15 +13,6 @@ public class SmtpSender {
     private static final String SMTP = "smtp";
     private static final int SMTP_PORT = 587;
     private final JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-
-    public static void main(String[] args) throws MessagingException {
-        String email = "malyshev.2005n@gmail.com";
-        String password = "eand sulf cndf ukoh";
-        SmtpSender manager = new SmtpSender("smtp.gmail.com");
-        manager.setUsernameAndPassword(email, password);
-        EmailBody body = new EmailBody("test with mimeMessage", "<h1>asdf</h1>", EmailBodyType.HTML);
-        manager.send(email, password, email, body);
-    }
 
     public SmtpSender(String smtpHost) {
         mailSender.setPort(SMTP_PORT);
