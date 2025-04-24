@@ -11,6 +11,6 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivateWorkflow {
+public class ActivateWorkflowTask {
     private UUID workflowInstanceId;
 }
