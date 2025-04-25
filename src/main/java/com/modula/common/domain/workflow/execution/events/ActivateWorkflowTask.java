@@ -1,5 +1,6 @@
 package com.modula.common.domain.workflow.execution.events;
 
+import com.modula.common.domain.workflow.Workflow;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,5 +13,5 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ActivateWorkflowTask {
-    private UUID workflowInstanceId;
+    private Workflow workflow;
 }

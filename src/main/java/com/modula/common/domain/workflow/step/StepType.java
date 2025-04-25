@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum StepType {
     ACTION("action"), // URL
-    TRIGGER("trigger"); // Подключение к модулю
+    TRIGGER_WEBHOOK("trigger"), // Подключение к модулю
+    TRIGGER_POLLING("trigger_polling");
 
     private final String value;
 
