@@ -1,9 +1,9 @@
 package com.modula.common.domain.сonnection.impl;
 
+import com.modula.common.domain.сonnection.ExternalConnection;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import modula.com.core_builder.connections.entity.ExternalConnection;
 
 import java.time.Instant;
 import java.util.Set;

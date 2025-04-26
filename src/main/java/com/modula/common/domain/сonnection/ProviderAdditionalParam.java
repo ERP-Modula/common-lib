@@ -15,9 +15,6 @@ public class ProviderAdditionalParam {
     @Column(name = "param_key", nullable = false)
     private String key; // Например: "domain"
 
-    @Column(name = "param_value_source", nullable = false)
-    private String valueSource; // Путь к значению, например: "connection.customDomain"
-
     @Column(name = "label", nullable = false)
     private String label; // Человекочитаемое название: "Домен Bitrix"
 

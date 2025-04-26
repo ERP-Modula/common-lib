@@ -20,11 +20,15 @@ public class Provider {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "label", nullable = false)
+    private String label;
+
+    private String description;
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProviderAdditionalParam> uriParams = new ArrayList<>();
+    private List<ProviderAdditionalParam> additionalParams = new ArrayList<>();
 
     @Column(name = "code_uri_template", nullable = false)
-    private String codeUriTemplate; // Шаблон с параметрами, например: "https://{domain}/oauth/authorize/"
+    private String codeUri; // Шаблон может быть с параметрами, например: "https://{domain}/oauth/authorize/"
 
     @Column(name = "auth_type", nullable = false)
     @Enumerated(EnumType.STRING)
