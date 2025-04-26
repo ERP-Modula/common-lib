@@ -1,10 +1,10 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.modula.common.domain.сonnection.Provider;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity

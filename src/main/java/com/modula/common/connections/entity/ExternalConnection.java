@@ -1,6 +1,6 @@
 package com.modula.common.connections.entity;
 
-import com.modula.common.domain.moduleconfiguration.Provider;
+import com.modula.common.domain.сonnection.Provider;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

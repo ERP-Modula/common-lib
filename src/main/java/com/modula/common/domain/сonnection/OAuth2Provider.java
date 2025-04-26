@@ -1,4 +1,4 @@
-package com.modula.common.domain.moduleconfiguration;
+package com.modula.common.domain.сonnection;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,8 +15,9 @@ public class OAuth2Provider extends Provider {
     private String clientId;
     @Column(name = "client_secret", nullable = false)
     private String clientSecret;
-    @Column(name = "code_uri", nullable = false)
-    private String codeUri;
+//    @Column(name = "code_uri", nullable = false)
+//    private String codeUri;
+
     @Column(name = "token_uri", nullable = false)
     private String tokenUri;
     @ElementCollection
