@@ -23,6 +23,7 @@ public class ExternalConnection {
 
     @Column(name = "connection_params", columnDefinition = "jsonb")
 //    @Convert(converter = ConnectionParamsConverter.class)
+    @ElementCollection
     private Map<String, String> connectionAdditionalParams = new HashMap<>();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
