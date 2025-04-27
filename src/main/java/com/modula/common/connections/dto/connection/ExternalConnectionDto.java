@@ -10,6 +10,8 @@ import com.modula.common.connections.dto.connection.util.ExternalConnectionRespo
 import lombok.Data;
 
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Data
@@ -26,9 +28,8 @@ import java.util.UUID;
 public abstract class ExternalConnectionDto implements ExternalConnectionResponse {
     private UUID id;
     private String name;
-    @JsonProperty("provider_id")
     private UUID providerId;
-    @JsonProperty("user_id")
     private UUID userId;
+    private Map<String, String> connectionAdditionalParams = new HashMap<>();
     private Boolean connected;
 }

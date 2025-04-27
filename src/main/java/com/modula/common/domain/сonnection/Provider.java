@@ -26,13 +26,13 @@ public class Provider {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "alert_notification")
+    @Column(name = "alert_notification", length = 20000)
     private String alertNotification;
 
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProviderAdditionalParam> additionalParams = new ArrayList<>();
 
-    @Column(name = "code_uri_template", nullable = false)
+    @Column(name = "code_uri", nullable = false)
     private String codeUri; // Шаблон может быть с параметрами, например: "https://{domain}/oauth/authorize/"
 
     @Column(name = "auth_type", nullable = false)

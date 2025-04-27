@@ -1,5 +1,6 @@
 package com.modula.common.domain.сonnection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +23,7 @@ public class ProviderAdditionalParam {
     private String description; // Подсказка: "Укажите поддомен вашего Bitrix24"
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "provider_id", nullable = false)
     private Provider provider;
 }

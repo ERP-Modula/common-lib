@@ -21,8 +21,6 @@ public class ExternalConnection {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "connection_params", columnDefinition = "jsonb")
-//    @Convert(converter = ConnectionParamsConverter.class)
     @ElementCollection
     private Map<String, String> connectionAdditionalParams = new HashMap<>();
 

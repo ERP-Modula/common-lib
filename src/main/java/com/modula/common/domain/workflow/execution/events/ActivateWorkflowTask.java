@@ -13,5 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ActivateWorkflowTask {
-    private Workflow workflow;
+    private UUID workflowId;
+    private boolean isActive;
 }

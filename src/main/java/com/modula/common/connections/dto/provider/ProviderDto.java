@@ -1,12 +1,13 @@
 package com.modula.common.connections.dto.provider;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.modula.common.connections.dto.provider.impl.OAuth2ProviderDto;
 import com.modula.common.domain.moduleconfiguration.AuthType;
+import com.modula.common.domain.сonnection.ProviderAdditionalParam;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -24,6 +25,10 @@ import java.util.UUID;
 public class ProviderDto {
     private UUID id;
     private String name;
-    @JsonProperty("auth_type")
+    private String codeUri;
+    private String label;
+    private String description;
+    private String alertNotification;
+    private List<ProviderAdditionalParam> additionalParams;
     private AuthType authType;
 }
