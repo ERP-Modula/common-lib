@@ -23,7 +23,12 @@ public class Provider {
     @Column(name = "label", nullable = false)
     private String label;
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "alert_notification")
+    private String alertNotification;
+
     @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProviderAdditionalParam> additionalParams = new ArrayList<>();
 
