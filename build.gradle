@@ -37,6 +37,8 @@ dependencies {
 	implementation("org.springframework:spring-context-support:6.2.5")
 	implementation("com.sun.mail:jakarta.mail:2.0.1")
 
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.2.1'
+
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'}
 
 tasks.named('test') {

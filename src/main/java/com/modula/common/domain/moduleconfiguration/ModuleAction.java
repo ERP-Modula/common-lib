@@ -1,6 +1,7 @@
 package com.modula.common.domain.moduleconfiguration;
 
 
+import com.modula.common.utils.ActionHttpMethodType;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -18,7 +19,9 @@ public class ModuleAction {
     private String label;
     private String description;
     private String category;
+//    Добавочная часть к ModuleConfiguration.getRestApiBaseUrl() для вызова конкретного endpoint
     private String endpointUrl;
+    private ActionHttpMethodType methodType;
 
     @ElementCollection
     private List<String> scopes;

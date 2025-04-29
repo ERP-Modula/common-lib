@@ -21,6 +21,10 @@ public class ModuleConfiguration {
     private Boolean isPublic;
     private String theme;
     private String authorId;
+    // Базовая часть всего open Api. Может быть шаблоном, с использованием переменных из connection.
+    // Например, https://**put_your_bitrix24_address**/rest, а /tasks.task.add это ednpoind конкретного action
+    private String restApiBaseUrl;
+    private String WebhookBaseUrl;
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 
