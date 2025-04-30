@@ -24,11 +24,12 @@ public class ModuleConfiguration {
     // Базовая часть всего open Api. Может быть шаблоном, с использованием переменных из connection.
     // Например, https://**put_your_bitrix24_address**/rest, а /tasks.task.add это ednpoind конкретного action
     private String restApiBaseUrl;
-    private String WebhookBaseUrl;
+    private String webhookBaseUrl;
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//  TODO Убрать из реста. приходят вся инфа о подключениях :) взломают
+    @ManyToOne(optional = false)
     @JoinColumn(name = "provider_id")
     private Provider provider;
 

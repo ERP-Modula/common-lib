@@ -10,5 +10,5 @@ public class IntegrationTask {
     private UUID workflowInstanceId;
     private UUID stepId;
     private String actionName;
-    private Map<String, String> params;
+    private Map<String, Object> params;
 }

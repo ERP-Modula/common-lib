@@ -21,6 +21,7 @@ public class ModuleAction {
     private String category;
 //    Добавочная часть к ModuleConfiguration.getRestApiBaseUrl() для вызова конкретного endpoint
     private String endpointUrl;
+    @Enumerated(EnumType.STRING)
     private ActionHttpMethodType methodType;
 
     @ElementCollection
