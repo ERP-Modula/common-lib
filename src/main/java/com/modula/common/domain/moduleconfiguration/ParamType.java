@@ -12,6 +12,7 @@ public enum ParamType {
     BUFFER("buffer"), // Буфер
     STRING("string"), // Строка
     COLLECTION("collection"), // Коллекция
+    OBJECT("object"), // JSON объект
     DATE("date"), // Дата
     EMAIL("email"), // Электронная почта
     FILENAME("filename"), // Имя файла
