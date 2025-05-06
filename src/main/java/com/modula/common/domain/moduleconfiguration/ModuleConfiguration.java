@@ -67,14 +67,12 @@ public class ModuleConfiguration {
      * This may contain template variables from the connection.
      * Example: "https://<bitrix_domain>/rest"
      */
-    // Базовая часть всего open Api. Может быть шаблоном, с использованием переменных из connection.
-    // Например, https://**put_your_bitrix24_address**/rest, а /tasks.task.add это ednpoind конкретного action
     private String restApiBaseUrl;
 
     /**
      * Base URL for the webhook API.
      * This may also contain template variables from the connection.
-     * Example: https://<bitrix_domain>/webhooks
+     * Example: https://bitrix_domain/webhooks
      */
     private String webhookBaseUrl;
 

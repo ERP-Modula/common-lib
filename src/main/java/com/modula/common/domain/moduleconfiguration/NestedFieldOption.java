@@ -57,6 +57,6 @@ public class NestedFieldOption {
     /**
      * Nested input parameters that should appear when this option is selected.
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InputParameter> nested;
 }
