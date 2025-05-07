@@ -1,13 +1,16 @@
 package com.modula.common.domain.moduleconfiguration;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Getter
+@Data
 public class OutputInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
