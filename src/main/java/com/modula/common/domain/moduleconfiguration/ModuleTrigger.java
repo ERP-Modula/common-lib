@@ -1,12 +1,15 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -55,11 +58,13 @@ public class ModuleTrigger {
     private String category;
 
     /**
-     * URL where this trigger will receive webhook events from external services.
-     * This is often relative to the webhook base URL.
+     * URL external system API for subscribe our service webhook.
      */
-    @Column(nullable = false)
-    private String endpointUrl;
+    private String webhookSubscribeUrl;
+    /**
+     * URL external system API for unsubscribe our service webhook.
+     */
+    private String webhookUnsubscribeUrl;
 
     /**
      * List of scopes required for this trigger to be invoked.

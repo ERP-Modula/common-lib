@@ -23,6 +23,11 @@ public class Workflow {
     private boolean enable = false;
     @Embedded
     private SchedulerSettings schedulerSettings;
+//    Параметр для polling триггеров, которым необходима дата забора новых объектов
+//    Например, GET https://www.googleapis.com/drive/v3/files?
+//  q=mimeType='application/vnd.google-apps.form' and createdTime > '2024-05-20T00:00:00' (lastPollingTime)
+
+    private ZonedDateTime lastPollingTime;
     private boolean isArchived = false;
     @ElementCollection
 //    TODO должны быть ссыылки на ModulesConfiguration
@@ -33,7 +38,6 @@ public class Workflow {
     private String updatedByUserId;
     private int executionCount;
     private ZonedDateTime lastExecution;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "workflow_step_mapping",
@@ -41,6 +45,9 @@ public class Workflow {
             inverseJoinColumns = @JoinColumn(name = "step_id")
     )
     private final List<Step> steps = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "workflow_id")
+    private final List<WorkflowTriggerSubscription> triggerSubscriptions = new ArrayList<>();
 
     //    TODO доделать остальные поля
     public Workflow(String name, String description) {
@@ -48,6 +55,13 @@ public class Workflow {
         this.description = description;
         this.created = ZonedDateTime.now();
         this.lastEdit = ZonedDateTime.now();
+    }
+
+    public void subscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
+        triggerSubscriptions.add(workflowTriggerSubscription);
+    }
+    public void unsubscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
+        triggerSubscriptions.remove(workflowTriggerSubscription);
     }
 
     public void addStep(Step step) {

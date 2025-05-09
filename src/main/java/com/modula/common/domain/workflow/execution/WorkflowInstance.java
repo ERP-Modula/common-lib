@@ -34,6 +34,7 @@ public class WorkflowInstance {
     )
     private List<Step> steps;
 
+//    TODO просто json ?
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IntegrationOutputObject> context;
 

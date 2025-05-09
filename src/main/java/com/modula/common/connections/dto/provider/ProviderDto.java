@@ -3,8 +3,8 @@ package com.modula.common.connections.dto.provider;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.modula.common.connections.dto.provider.impl.OAuth2ProviderDto;
+import com.modula.common.domain.connection.ProviderAdditionalParam;
 import com.modula.common.domain.moduleconfiguration.AuthType;
-import com.modula.common.domain.сonnection.ProviderAdditionalParam;
 import lombok.Data;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.modula.common.domain.workflow.execution.events;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.modula.common.domain.workflow.execution.IntegrationOutputObject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -43,7 +43,7 @@ public class ExternalConnection {
     /**
      * The provider to which this connection is bound (e.g., Bitrix24, Google).
      */
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "provider_id")
     private Provider provider;
 

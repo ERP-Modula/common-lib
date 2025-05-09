@@ -1,10 +1,7 @@
 package com.modula.common.domain.moduleconfiguration;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,10 +11,9 @@ import java.util.UUID;
  * Commonly used for input types like dropdowns or radio buttons,
  * where selecting a value reveals additional input fields.
  */
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Data
 @Entity
 public class NestedFieldOption {
 
