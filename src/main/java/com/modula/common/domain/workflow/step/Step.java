@@ -2,6 +2,8 @@ package com.modula.common.domain.workflow.step;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +19,7 @@ public class Step {
     private StepType type;
 
 
-//  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
+    //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
     private String source;
     @ElementCollection
     private List<UUID> prevStepId;
@@ -25,8 +27,9 @@ public class Step {
     private List<UUID> nextStepId;
     @Embedded
     private StepMetadata metadata;
-    @ElementCollection
-    private Map<String, String> parametersConfiguration;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, Object> parametersConfiguration;
 
     public void updateLocation(double newX, double newY) {
         Location newLocation = new Location(newX, newY);

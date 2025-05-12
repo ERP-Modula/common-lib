@@ -36,7 +36,7 @@ public class WorkflowTriggerSubscription {
      * Workflow, который подписан на триггер
      */
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "workflow_id", nullable = false)
     private Workflow workflow;
 

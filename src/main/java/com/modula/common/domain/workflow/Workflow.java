@@ -1,6 +1,7 @@
 package com.modula.common.domain.workflow;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -45,6 +46,7 @@ public class Workflow {
             inverseJoinColumns = @JoinColumn(name = "step_id")
     )
     private final List<Step> steps = new ArrayList<>();
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workflow_id")
     private final List<WorkflowTriggerSubscription> triggerSubscriptions = new ArrayList<>();
