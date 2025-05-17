@@ -91,4 +91,8 @@ public class Workflow {
     public void removeStep(UUID stepId) {
         steps.removeIf(s -> s.getId().equals(stepId));
     }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
 }
