@@ -58,4 +58,9 @@ public class ExternalConnection {
      */
     @Column(name = "connected")
     private Boolean connected;
+
+    /**
+     * Show which workspace the connection belongs to
+     */
+    private UUID workspaceId;
 }
