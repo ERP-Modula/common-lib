@@ -22,6 +22,7 @@ public class Workflow {
     private String name;
     private String description;
     private boolean enable = false;
+    private boolean isActive = false;
     @Embedded
     private SchedulerSettings schedulerSettings;
 //    Параметр для polling триггеров, которым необходима дата забора новых объектов
@@ -89,5 +90,9 @@ public class Workflow {
 
     public void removeStep(UUID stepId) {
         steps.removeIf(s -> s.getId().equals(stepId));
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 }

@@ -9,6 +9,7 @@ import java.util.UUID;
 @Data
 public class IntegrationTask {
     private UUID workflowInstanceId;
+    // TODO UUID instead of object
     private Step step;
     private String actionName;
     private Map<String, Object> params;
