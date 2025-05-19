@@ -30,6 +30,7 @@ public abstract class ExternalConnectionDto implements ExternalConnectionRespons
     private String name;
     private UUID providerId;
     private UUID userId;
+    private UUID workspaceId;
     private Map<String, String> connectionAdditionalParams = new HashMap<>();
     private Boolean connected;
 }
