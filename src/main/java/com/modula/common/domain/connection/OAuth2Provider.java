@@ -1,5 +1,7 @@
 package com.modula.common.domain.connection;
 
+import com.modula.common.domain.moduleconfiguration.AuthType;
+import com.modula.common.domain.moduleconfiguration.RequestType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,4 +48,8 @@ public class OAuth2Provider extends Provider {
     @ElementCollection
     @CollectionTable(name = "extra_query_params")
     private Map<String, String> extraQueryParams;
+
+    @Column(name = "request_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RequestType authType;
 }
