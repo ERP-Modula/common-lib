@@ -68,5 +68,4 @@ public class OAuth2Provider extends Provider {
     @Column(name = "request_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
-
 }
