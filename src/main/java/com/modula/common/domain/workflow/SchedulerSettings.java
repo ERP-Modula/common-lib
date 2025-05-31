@@ -1,8 +1,7 @@
 package com.modula.common.domain.workflow;
 
 import jakarta.annotation.Nullable;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +15,7 @@ public class SchedulerSettings {
     @Nullable
     private Long interval;
     @Nullable
-    private ZonedDateTime onceRunningDate;
+    private ZonedDateTime onceRunningDate; // timestamp
     @Nullable
     private String time;
     @Nullable
@@ -25,6 +24,7 @@ public class SchedulerSettings {
     @Nullable
     @ElementCollection
     private List<Integer> months;
+    @Enumerated(EnumType.STRING)
     private ScheduledType scheduledType;
 }
 

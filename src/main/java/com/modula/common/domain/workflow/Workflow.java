@@ -95,4 +95,8 @@ public class Workflow {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
+
+    public void setLastExecution(ZonedDateTime lastExecution) {
+        this.lastExecution = lastExecution;
+    }
 }
