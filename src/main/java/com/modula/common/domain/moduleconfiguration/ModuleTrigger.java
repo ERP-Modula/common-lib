@@ -52,6 +52,7 @@ public class ModuleTrigger {
      */
     private String description;
 
+    private final String handlerType = "TRIGGER";
     /**
      * Category used for grouping in the UI (e.g., "tasks", "notifications").
      */

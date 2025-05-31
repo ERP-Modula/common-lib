@@ -86,7 +86,7 @@ public class ModuleConfiguration {
      * Reference to the provider associated with this module.
      */
 //  TODO Убрать из реста. приходят вся инфа о подключениях :) взломают
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider provider;
 

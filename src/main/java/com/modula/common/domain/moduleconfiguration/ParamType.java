@@ -28,6 +28,7 @@ public enum ParamType {
 
     /** A collection, similar to an array but often tied to external sources. */
     COLLECTION("collection"),
+    CUSTOM_WEBHOOK("webhook"),
 
     /** JSON object with nested structure. */
     OBJECT("object"),

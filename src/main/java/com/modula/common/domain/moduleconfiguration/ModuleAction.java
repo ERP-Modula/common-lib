@@ -43,6 +43,11 @@ public class ModuleAction {
     private String description;
 
     /**
+     * Action Link to Modula help center WIKI.
+     */
+    private String documentationSource;
+
+    /**
      * Category of the action, used for grouping in UI (e.g., "tasks", "messages").
      */
     private String category;
@@ -54,6 +59,8 @@ public class ModuleAction {
      * Example: "/tasks.task.add"
      */
     private String endpointUrl;
+
+    private final String handlerType = "ACTION";
 
     /**
      * HTTP method used to call the action (e.g., GET, POST, PUT).

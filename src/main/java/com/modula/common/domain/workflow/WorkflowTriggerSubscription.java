@@ -48,8 +48,7 @@ public class WorkflowTriggerSubscription {
     public WorkflowTriggerSubscription(
             ModuleTrigger trigger,
             ExternalConnection connection,
-            Workflow workflow,
-            String callbackUrl
+            Workflow workflow
     ) {
         this.trigger = trigger;
         this.connection = connection;
