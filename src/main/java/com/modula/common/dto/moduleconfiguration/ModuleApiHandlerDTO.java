@@ -11,4 +11,5 @@ public class ModuleApiHandlerDTO {
     private String label;
     private String description;
     private String category;
+    private String handlerType;
 }

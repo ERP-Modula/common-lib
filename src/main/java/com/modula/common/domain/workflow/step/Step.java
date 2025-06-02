@@ -30,6 +30,25 @@ public class Step {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String, Object> parametersConfiguration;
+    @ElementCollection
+    private List<Edge> edges;
+
+
+    public void addNextStep(UUID newNextStepId) {
+        nextStepId.add(newNextStepId);
+    }
+
+    public void removeNextStep(UUID removedNextStepId) {
+        nextStepId.remove(removedNextStepId);
+    }
+
+    public void addNewEdge(Edge edge) {
+        edges.add(edge);
+    }
+
+    public void removeEdge(Edge edge) {
+        edges.remove(edge);
+    }
 
     public void updateLocation(double newX, double newY) {
         Location newLocation = new Location(newX, newY);
