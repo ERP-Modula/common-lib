@@ -13,12 +13,13 @@ import java.util.UUID;
 @Data
 public class Step {
     @Id
-    @GeneratedValue(generator = "UUID")
+//    @GeneratedValue(generator = "UUID")
+//    Генерация на фронте
     private UUID id;
     @Enumerated(EnumType.STRING)
     private StepType type;
-
-
+    private UUID parentModuleId;
+    private UUID handlerId;
     //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
     private String source;
     @ElementCollection
@@ -30,8 +31,6 @@ public class Step {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String, Object> parametersConfiguration;
-    @ElementCollection
-    private List<Edge> edges;
 
 
     public void addNextStep(UUID newNextStepId) {
@@ -42,12 +41,12 @@ public class Step {
         nextStepId.remove(removedNextStepId);
     }
 
-    public void addNewEdge(Edge edge) {
-        edges.add(edge);
+    public void addPrevStep(UUID newPrevStepId) {
+        prevStepId.add(newPrevStepId);
     }
 
-    public void removeEdge(Edge edge) {
-        edges.remove(edge);
+    public void removePrevStep(UUID removedPrevStepId) {
+        prevStepId.remove(removedPrevStepId);
     }
 
     public void updateLocation(double newX, double newY) {

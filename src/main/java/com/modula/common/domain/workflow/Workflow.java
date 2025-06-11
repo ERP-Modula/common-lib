@@ -2,6 +2,7 @@ package com.modula.common.domain.workflow;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.modula.common.domain.workflow.step.Edge;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -47,6 +48,14 @@ public class Workflow {
             inverseJoinColumns = @JoinColumn(name = "step_id")
     )
     private final List<Step> steps = new ArrayList<>();
+    //  For frontend
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "workflow_edge_mapping",
+            joinColumns = @JoinColumn(name = "workflow_id"),
+            inverseJoinColumns = @JoinColumn(name = "edge_id")
+    )
+    private List<Edge> edges;
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workflow_id")
@@ -63,6 +72,7 @@ public class Workflow {
     public void subscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
         triggerSubscriptions.add(workflowTriggerSubscription);
     }
+
     public void unsubscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
         triggerSubscriptions.remove(workflowTriggerSubscription);
     }
@@ -92,7 +102,19 @@ public class Workflow {
         steps.removeIf(s -> s.getId().equals(stepId));
     }
 
+    public void addNewEdge(Edge edge) {
+        edges.add(edge);
+    }
+
+    public void removeEdge(Edge edge) {
+        edges.remove(edge);
+    }
+
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public void setLastExecution(ZonedDateTime lastExecution) {
+        this.lastExecution = lastExecution;
     }
 }
