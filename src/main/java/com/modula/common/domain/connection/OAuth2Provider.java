@@ -1,5 +1,7 @@
 package com.modula.common.domain.connection;
 
+import com.modula.common.domain.moduleconfiguration.AuthType;
+import com.modula.common.domain.moduleconfiguration.RequestType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -46,4 +48,24 @@ public class OAuth2Provider extends Provider {
     @ElementCollection
     @CollectionTable(name = "extra_query_params")
     private Map<String, String> extraQueryParams;
+
+    /**
+     * Specifies the HTTP request type to be used when obtaining the OAuth2 access token.
+     * <p>
+     * This field determines how the token request should be structured — including the HTTP method,
+     * the format of the body (e.g., form-urlencoded, JSON), and whether parameters are passed
+     * via the URL or request body.
+     * <p>
+     * Typical values include:
+     * <ul>
+     *     <li>{@code POST_WITH_FORM_URLENCODED} — standard OAuth2 flow (RFC 6749)</li>
+     *     <li>{@code POST_WITH_JSON_BODY} — for APIs requiring JSON-formatted requests (e.g., Yandex Tracker)</li>
+     *     <li>{@code GET_WITH_URL_PARAMS} — for legacy or simple integrations</li>
+     *     <li>{@code CUSTOM} — for provider-specific request handling</li>
+     * </ul>
+     * This value must be explicitly set for each {@link OAuth2Provider} configuration.
+     */
+    @Column(name = "request_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private RequestType requestType;
 }
