@@ -19,6 +19,7 @@ public class Step {
     @Enumerated(EnumType.STRING)
     private StepType type;
     private UUID parentModuleId;
+    private int orderNum;
     private UUID handlerId;
     //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
     private String source;
