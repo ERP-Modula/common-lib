@@ -71,10 +71,12 @@ public class Workflow {
 
     public void subscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
         triggerSubscriptions.add(workflowTriggerSubscription);
+        enable = true;
     }
 
     public void unsubscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
         triggerSubscriptions.remove(workflowTriggerSubscription);
+        enable = false;
     }
 
     public void addStep(Step step) {

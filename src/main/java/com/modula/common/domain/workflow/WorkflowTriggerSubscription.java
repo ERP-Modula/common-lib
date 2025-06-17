@@ -6,7 +6,10 @@ import com.modula.common.domain.moduleconfiguration.ModuleTrigger;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
+import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -44,6 +47,9 @@ public class WorkflowTriggerSubscription {
      * Внешний ID подписки (если API сервиса возвращает его)
      */
     private String externalSubscriptionId;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private Map<String, Object> triggerParams;
 
     public WorkflowTriggerSubscription(
             ModuleTrigger trigger,
@@ -53,5 +59,9 @@ public class WorkflowTriggerSubscription {
         this.trigger = trigger;
         this.connection = connection;
         this.workflow = workflow;
+    }
+
+    public void setTriggerParams(Map<String, Object> triggerParams) {
+        this.triggerParams = triggerParams;
     }
 }
