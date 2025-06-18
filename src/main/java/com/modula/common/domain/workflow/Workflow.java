@@ -119,4 +119,10 @@ public class Workflow {
     public void setLastExecution(ZonedDateTime lastExecution) {
         this.lastExecution = lastExecution;
     }
+
+    public Step getWorkflowFirstStep() {
+        return steps.stream().filter(step -> step.getOrderNum() == 1).findFirst().orElseThrow(
+                () -> new IllegalArgumentException("First step was not found by order num")
+        );
+    }
 }
