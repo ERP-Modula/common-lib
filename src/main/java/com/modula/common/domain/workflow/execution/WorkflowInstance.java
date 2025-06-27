@@ -4,10 +4,8 @@ import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,6 +20,8 @@ public class WorkflowInstance {
     private Boolean isRoot;
     private Timestamp startTime;
     private Boolean isDone = false;
+    @Enumerated(EnumType.STRING)
+    private WorkflowInstanceStatus status;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WorkflowInstance> sub;
@@ -34,7 +34,7 @@ public class WorkflowInstance {
     )
     private List<Step> steps;
 
-//    TODO просто json ?
+    //    TODO просто json ?
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IntegrationOutputObject> context;
 

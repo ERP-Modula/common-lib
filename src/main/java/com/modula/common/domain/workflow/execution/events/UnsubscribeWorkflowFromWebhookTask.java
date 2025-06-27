@@ -9,6 +9,6 @@ import java.util.Map;
 @Data
 public class UnsubscribeWorkflowFromWebhookTask {
     private Workflow workflow;
-    private ModuleTrigger webhookTrigger;
+    private String webhookTriggerName;
     private Map<String, Object> webhookParams;
 }

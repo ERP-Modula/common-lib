@@ -1,20 +1,22 @@
 package com.modula.common.domain.workflow.execution.events;
 
+
 import com.fasterxml.jackson.databind.JsonNode;
-import com.modula.common.domain.workflow.execution.IntegrationOutputObject;
+import jakarta.annotation.Nullable;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExecutorTask {
+public class IntegrationTaskWasFailed {
+    private Boolean isTestExecution;
+    @Nullable
     private UUID workflowInstanceId;
-    private Boolean isFirstStep;
-    private IntegrationOutputObject integrationOutput;
+    @Nullable
+    private String testWebsocketSessionId;
+    private JsonNode errorMessage;
 }

@@ -32,7 +32,7 @@ public class WorkflowTriggerSubscription {
      * Подключение, используемое для этой подписки
      */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "external_connection_id", nullable = false)
+    @JoinColumn(name = "external_connection_id")
     private ExternalConnection connection;
 
     /**

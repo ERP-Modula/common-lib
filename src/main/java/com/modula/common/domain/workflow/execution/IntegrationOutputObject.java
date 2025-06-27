@@ -1,12 +1,12 @@
 package com.modula.common.domain.workflow.execution;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.modula.common.domain.connection.Provider;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,10 +19,9 @@ public class IntegrationOutputObject {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "step_id")
     private Step step;
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<OutputInterfaceField> fields;
-
-//    TODO change column def to jsonb
-    @Column(columnDefinition = "text")
-    private String outputJsonPayload; // JsonNode.toString()
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private JsonNode outputJsonPayload;
 }

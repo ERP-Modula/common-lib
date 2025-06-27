@@ -9,6 +9,5 @@ import java.util.Map;
 @Data
 public class WebhookSubscribeIntegrationTask {
     private Workflow workflow;
-    private ModuleTrigger webhookTrigger;
     private Map<String, Object> webhookParams;
 }
