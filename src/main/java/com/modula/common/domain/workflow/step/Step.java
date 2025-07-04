@@ -23,6 +23,7 @@ public class Step {
     private UUID handlerId;
     //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
     private String source;
+    private Boolean isValid;
     @ElementCollection
     private List<UUID> prevStepId;
     @ElementCollection
