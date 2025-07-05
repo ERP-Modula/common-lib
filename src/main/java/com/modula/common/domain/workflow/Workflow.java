@@ -88,16 +88,8 @@ public class Workflow {
 
 
     public void updateStep(UUID stepId, Step updatedStep) {
-        Step existingStep = steps.stream()
-                .filter(s -> s.getId().equals(stepId))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Step not found"));
-        existingStep.setType(updatedStep.getType());
-        existingStep.setSource(updatedStep.getSource());
-        existingStep.setPrevStepId(updatedStep.getPrevStepId());
-        existingStep.setNextStepId(updatedStep.getNextStepId());
-        existingStep.setMetadata(updatedStep.getMetadata());
-        existingStep.setParametersConfiguration(updatedStep.getParametersConfiguration());
+        var existingStepIndex = steps.indexOf(updatedStep);
+        steps.set(existingStepIndex, updatedStep);
     }
 
     public void removeStep(UUID stepId) {
