@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.workflow.step.Edge;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Getter
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Workflow {
     @Id
     @GeneratedValue(generator = "UUID")
