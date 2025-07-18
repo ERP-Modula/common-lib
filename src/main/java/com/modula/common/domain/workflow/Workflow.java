@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@ToString
 @Getter
 @Entity
 @NoArgsConstructor
@@ -120,5 +119,10 @@ public class Workflow {
         return steps.stream().filter(step -> step.getOrderNum() == 1).findFirst().orElseThrow(
                 () -> new IllegalArgumentException("First step was not found by order num")
         );
+    }
+
+    @Override
+    public String toString(){
+        return id + " " + name + " " + enable + " " + isActive + " ";
     }
 }
