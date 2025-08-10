@@ -89,10 +89,19 @@ public class Workflow {
         steps.add(step);
     }
 
-
     public void updateStep(UUID stepId, Step updatedStep) {
-        var existingStepIndex = steps.indexOf(updatedStep);
-        steps.set(existingStepIndex, updatedStep);
+        int existingStepIndex = -1;
+        for (int i = 0; i < steps.size(); i++) {
+            if (steps.get(i).getId().equals(stepId)) {
+                existingStepIndex = i;
+                break;
+            }
+        }
+        if (existingStepIndex != -1) {
+            steps.set(existingStepIndex, updatedStep);
+        } else {
+            throw new IllegalArgumentException("Step with ID " + stepId + " not found in this workflow.");
+        }
     }
 
     public void removeStep(UUID stepId) {
