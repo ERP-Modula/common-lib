@@ -58,7 +58,7 @@ public class Workflow {
             joinColumns = @JoinColumn(name = "workflow_id"),
             inverseJoinColumns = @JoinColumn(name = "edge_id")
     )
-    private List<Edge> edges;
+    private List<Edge> edges = new ArrayList<>();
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workflow_id")
