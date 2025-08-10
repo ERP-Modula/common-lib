@@ -116,9 +116,10 @@ public class Workflow {
     }
 
     public Step getWorkflowFirstStep() {
-        return steps.stream().filter(step -> step.getOrderNum() == 1).findFirst().orElseThrow(
-                () -> new IllegalArgumentException("First step was not found by order num")
-        );
+        return steps.stream()
+                .filter(step -> step.getOrderNum() == 1)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
