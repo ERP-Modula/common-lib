@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -28,9 +29,9 @@ public class Step {
     private String source;
     private Boolean isValid;
     @ElementCollection
-    private List<UUID> prevStepId;
+    private List<UUID> prevStepId = new ArrayList<>();
     @ElementCollection
-    private List<UUID> nextStepId;
+    private List<UUID> nextStepId = new ArrayList<>();
     @Embedded
     private StepMetadata metadata;
     @JdbcTypeCode(SqlTypes.JSON)
