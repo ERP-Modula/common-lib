@@ -1,5 +1,6 @@
 package com.modula.common.domain.workflow.execution.events;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,5 @@ public class OneTimeSubscriptionStatusUpdated {
     private String websocketSessionId;
     private String status;
     private int initialDuration;
+    private JsonNode webhookPayload;
 }
