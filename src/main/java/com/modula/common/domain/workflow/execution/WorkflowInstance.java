@@ -19,6 +19,7 @@ public class WorkflowInstance {
     private UUID currentStepId;
     private Boolean isRoot;
     private Timestamp startTime;
+    private Timestamp endTime;
     private Boolean isDone = false;
     @Enumerated(EnumType.STRING)
     private WorkflowInstanceStatus status;

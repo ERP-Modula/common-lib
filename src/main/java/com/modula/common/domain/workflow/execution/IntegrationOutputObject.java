@@ -7,6 +7,7 @@ import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
@@ -15,12 +16,13 @@ public class IntegrationOutputObject {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
+    private Timestamp startTime;
+    private Timestamp endTime;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "step_id")
     private Step step;
-    //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<OutputInterfaceField> fields;
+    @Enumerated(EnumType.STRING)
+    private IntegrationOutputStatus status;
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private JsonNode outputJsonPayload;
