@@ -22,7 +22,7 @@ public class IntegrationOutputObject {
     @JoinColumn(name = "step_id")
     private Step step;
     @Enumerated(EnumType.STRING)
-    private IntegrationOutputStatus status;
+    private IntegrationOutputStatus status = IntegrationOutputStatus.UNPROCESSED;
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private JsonNode outputJsonPayload;
