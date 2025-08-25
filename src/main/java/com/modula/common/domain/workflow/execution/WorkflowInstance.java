@@ -36,7 +36,7 @@ public class WorkflowInstance {
     private List<Step> steps;
 
     //    TODO просто json ?
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<IntegrationOutputObject> context;
 
     public UUID getFirstStepId() {
