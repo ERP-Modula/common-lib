@@ -21,6 +21,9 @@ public class IntegrationOutputObject {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "step_id")
     private Step step;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workflow_instance_id")
+    private WorkflowInstance workflowInstance;
     @Enumerated(EnumType.STRING)
     private IntegrationOutputStatus status = IntegrationOutputStatus.UNPROCESSED;
     @JdbcTypeCode(SqlTypes.JSON)
