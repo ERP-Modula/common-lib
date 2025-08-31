@@ -1,5 +1,6 @@
 package com.modula.common.domain.workflow.execution.events;
 
+import com.modula.common.connections.dto.connection.ExternalConnectionDto;
 import jakarta.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,6 @@ public class IntegrationTaskWasPublished {
     private String testWebsocketSessionId;
     private String actionName;
     private Map<String, Object> params;
+    @Nullable
+    private ExternalConnectionDto connection;
 }
