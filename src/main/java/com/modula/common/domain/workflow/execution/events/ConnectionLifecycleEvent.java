@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 public class ConnectionLifecycleEvent {
 
     private ConnectionEventType eventType;
+    private String moduleName;
     private ExternalConnectionDto connection;
 }
