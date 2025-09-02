@@ -38,6 +38,13 @@ public class Step {
     @Column(columnDefinition = "jsonb")
     private Map<String, Object> parametersConfiguration;
 
+    @Transient
+    public StepSource getParsedSource() {
+        if (this.source == null) {
+            return null;
+        }
+        return new StepSource(this.source);
+    }
 
     public void addNextStep(UUID newNextStepId) {
         nextStepId.add(newNextStepId);
