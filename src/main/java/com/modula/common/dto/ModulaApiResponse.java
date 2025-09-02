@@ -19,4 +19,11 @@ public class ModulaApiResponse {
                 .message(message)
                 .build();
     }
+
+    public static ModulaApiResponse error(String message) {
+        return ModulaApiResponse.builder()
+                .success(false)
+                .message(message)
+                .build();
+    }
 }
