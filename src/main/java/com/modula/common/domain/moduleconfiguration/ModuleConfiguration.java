@@ -18,6 +18,7 @@ import java.util.UUID;
         name = "module_configuration",
         uniqueConstraints = @UniqueConstraint(columnNames = "name")
 )
+@Inheritance(strategy = InheritanceType.JOINED)
 public class ModuleConfiguration {
 
     /**
@@ -61,34 +62,6 @@ public class ModuleConfiguration {
      * Identifier of the author or system that created the module.
      */
     private String authorId;
-
-    /**
-     * Base URL for accessing the open REST API.
-     * This may contain template variables from the connection.
-     * Example: "https://<bitrix_domain>/rest"
-     */
-    private String restApiBaseUrl;
-
-    /**
-     * Base URL for the webhook API.
-     * This may also contain template variables from the connection.
-     * Example: https://bitrix_domain/webhooks
-     */
-    private String webhookBaseUrl;
-
-    /**
-     * Authentication type used by the module (e.g., OAUTH2, API_KEY).
-     */
-    @Enumerated(EnumType.STRING)
-    private AuthType authType;
-
-    /**
-     * Reference to the provider associated with this module.
-     */
-//  TODO Убрать из реста. приходят вся инфа о подключениях :) взломают
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    private Provider provider;
 
     /**
      * Categories to which the module belongs (e.g., ["crm", "sales"]).
