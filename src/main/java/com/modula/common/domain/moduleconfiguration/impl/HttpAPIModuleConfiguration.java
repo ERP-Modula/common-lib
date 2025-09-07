@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-public class RestAPIModuleConfiguration extends ModuleConfiguration {
+public class HttpAPIModuleConfiguration extends ModuleConfiguration {
 
     /**
      * Authentication type used by the module (e.g., OAUTH2, API_KEY).
