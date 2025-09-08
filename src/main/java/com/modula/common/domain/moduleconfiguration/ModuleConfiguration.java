@@ -52,7 +52,6 @@ public class ModuleConfiguration {
      * S3 object key for the module's logo (e.g., "logos/telegram/v1/icon.svg").
      * The actual URL should be resolved via CDN/object storage configuration.
      */
-    @Column(name = "logo_key")
     private String logoKey;
 
     /**
