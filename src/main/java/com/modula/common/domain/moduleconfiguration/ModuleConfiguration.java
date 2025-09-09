@@ -1,6 +1,5 @@
 package com.modula.common.domain.moduleconfiguration;
 
-import com.modula.common.domain.connection.Provider;
 import jakarta.persistence.*;
 import lombok.Data;
 

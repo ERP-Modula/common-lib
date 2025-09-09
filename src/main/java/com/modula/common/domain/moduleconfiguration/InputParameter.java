@@ -59,4 +59,36 @@ public class InputParameter {
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InputParameter> spec;
+
+    /**
+     * If true, options should be fetched dynamically at runtime using
+     * optionsEndpointUrl and parsing configuration below.
+     */
+    private Boolean dynamicOptions;
+
+    /**
+     * Relative endpoint URL to fetch dynamic options from (e.g., "/models").
+     * Will be resolved against module REST API base URL.
+     */
+    private String optionsEndpointUrl;
+
+    /**
+     * HTTP method to fetch options (GET/POST). Defaults to GET if null.
+     */
+    private String optionsHttpMethod;
+
+    /**
+     * JSONPath to the array in response that contains items (e.g., "$.data").
+     */
+    private String optionsDataJsonPath;
+
+    /**
+     * Field name inside each item for the option value (e.g., "id").
+     */
+    private String optionsValueField;
+
+    /**
+     * Field name inside each item for the option label (e.g., "id" or "name").
+     */
+    private String optionsLabelField;
 }
