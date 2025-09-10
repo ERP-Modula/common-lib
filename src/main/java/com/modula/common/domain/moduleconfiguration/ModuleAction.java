@@ -1,6 +1,5 @@
 package com.modula.common.domain.moduleconfiguration;
 
-
 import com.modula.common.utils.ActionHttpMethodType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -52,7 +51,6 @@ public class ModuleAction {
      */
     private String category;
 
-
     /**
      * Relative URL for the endpoint.
      * Will be appended to ModuleConfiguration.restApiBaseUrl.
@@ -85,6 +83,6 @@ public class ModuleAction {
      * List of input parameters required to invoke this action.
      * Defines request body or query parameters depending on method type.
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<InputParameter> inputParameters;
 }

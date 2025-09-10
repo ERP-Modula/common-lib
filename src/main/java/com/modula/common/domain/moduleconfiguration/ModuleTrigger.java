@@ -2,6 +2,7 @@ package com.modula.common.domain.moduleconfiguration;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -74,8 +75,9 @@ public class ModuleTrigger {
     private List<OutputInterface> outputInterface;
 
     /**
-     * List of parameters used to configure the trigger (e.g., filters, event types).
+     * List of parameters used to configure the trigger (e.g., filters, event
+     * types).
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InputParameter> inputParameters;
 }
