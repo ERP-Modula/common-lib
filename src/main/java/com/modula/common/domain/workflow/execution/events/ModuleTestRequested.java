@@ -18,6 +18,7 @@ public class ModuleTestRequested {
     private UUID stepId;
     private UUID sessionId; // Для обратной связи через WebSocket
     private String stepType;
+    private String stepSource;
     private Map<String, Object> params;
     private ExternalConnectionDto connection;
 }
