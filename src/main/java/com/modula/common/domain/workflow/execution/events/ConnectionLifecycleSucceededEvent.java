@@ -14,8 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConnectionLifecycleSucceededEvent {
-
     private UUID connectionId;
     private String moduleName;
-    private ConnectionLifecycleEvent eventType;
+    private ConnectionEventType eventType;
 }

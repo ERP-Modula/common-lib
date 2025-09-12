@@ -18,7 +18,7 @@ public class ConnectionLifecycleFailedEvent {
 
     private UUID connectionId;
     private String moduleName;
-    private ConnectionLifecycleEvent eventType;
+    private ConnectionEventType eventType;
     private String errorMessage;
     private JsonNode errorDetails;
 }
