@@ -73,11 +73,11 @@ public class ModuleAction {
     private List<String> scopes;
 
     /**
-     * List of fields returned by this action.
-     * Used to define the structure of the API response.
+     * List of preview configurations for this action.
+     * Defines how the action's output should be displayed in preview mode.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OutputInterface> outputInterface;
+    private List<PreviewConfig> previewConfigs;
 
     /**
      * List of input parameters required to invoke this action.

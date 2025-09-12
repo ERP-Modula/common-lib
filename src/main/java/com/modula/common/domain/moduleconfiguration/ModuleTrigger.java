@@ -69,10 +69,11 @@ public class ModuleTrigger {
     private List<String> scopes;
 
     /**
-     * List of fields that the webhook payload returns.
+     * List of preview configurations for this trigger.
+     * Defines how the trigger's output should be displayed in preview mode.
      */
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<OutputInterface> outputInterface;
+    private List<PreviewConfig> previewConfigs;
 
     /**
      * List of parameters used to configure the trigger (e.g., filters, event
@@ -80,4 +81,9 @@ public class ModuleTrigger {
      */
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InputParameter> inputParameters;
+
+    // Setter for previewConfigs (needed for service layer)
+    public void setPreviewConfigs(List<PreviewConfig> previewConfigs) {
+        this.previewConfigs = previewConfigs;
+    }
 }
