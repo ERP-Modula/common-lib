@@ -21,11 +21,8 @@ public class SystemEventLog {
     @Column(nullable = false)
     private Timestamp timestamp = Timestamp.from(Instant.now());
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private UUID workflowId;
-
-    private UUID workspaceId;
-    private String moduleName;
 
     private UUID connectionId;
 
