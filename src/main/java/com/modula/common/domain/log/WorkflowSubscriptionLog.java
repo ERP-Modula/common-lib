@@ -1,6 +1,7 @@
 package com.modula.common.domain.log;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.modula.common.domain.workflow.execution.events.TriggerSubscriptionAction;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -9,10 +10,13 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * Хранит историю событий подписки/отписки для конкретного воркфлоу.
+ */
 @Data
 @Entity
-@Table(name = "system_event_logs")
-public class SystemEventLog {
+@Table(name = "workflow_subscription_logs")
+public class WorkflowSubscriptionLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,29 +26,25 @@ public class SystemEventLog {
     private Timestamp timestamp = Timestamp.from(Instant.now());
 
     @Column(nullable = false)
-    private UUID workspaceId;
-
     private UUID workflowId;
 
-    private UUID connectionId;
+    @Column(nullable = false)
+    private String moduleName;
+
+    @Column(nullable = false)
+    private String triggerName;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LogLevel level;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private SystemEventType eventType;
+    private TriggerSubscriptionAction action;
 
     @Column(nullable = false)
-    private String sourceService;
+    private String status;
 
-    @Column(nullable = false, length = 512)
+    @Column(length = 512)
     private String message;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private JsonNode details;
-
-    private String moduleName;
 }

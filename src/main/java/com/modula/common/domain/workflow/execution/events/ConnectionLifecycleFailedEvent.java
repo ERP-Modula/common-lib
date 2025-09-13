@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConnectionLifecycleFailedEvent {
-
+    private UUID workspaceId;
     private UUID connectionId;
     private String moduleName;
     private ConnectionEventType eventType;

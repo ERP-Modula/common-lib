@@ -9,6 +9,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WebhookProcessingFailed {
+    private UUID workspaceId;
     private String moduleName;
     private UUID connectionId;
     private String reason;
