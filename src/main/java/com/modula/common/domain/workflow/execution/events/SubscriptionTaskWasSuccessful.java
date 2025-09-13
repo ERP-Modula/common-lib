@@ -8,10 +8,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WebhookProcessingFailed {
-    private UUID workspaceId;
+public class SubscriptionTaskWasSuccessful {
+    private UUID workflowId;
     private String moduleName;
-    private UUID connectionId;
-    private String reason;
-    private String payloadSnippet;
+    private String triggerName;
+    private TriggerSubscriptionAction action;
 }

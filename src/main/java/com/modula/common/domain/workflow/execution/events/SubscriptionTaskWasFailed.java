@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.UUID;
 
 /**
@@ -34,4 +33,6 @@ public class SubscriptionTaskWasFailed {
      * JSON-объект, содержащий детали ошибки.
      */
     private JsonNode errorMessage;
+
+    private TriggerSubscriptionAction action;
 }
