@@ -69,6 +69,14 @@ public class ModuleTrigger {
     private List<String> scopes;
 
     /**
+     * Expected response type for this trigger.
+     * Determines how the response should be handled (JSON, binary, text, etc.).
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ResponseType responseType = ResponseType.JSON;
+
+    /**
      * List of preview configurations for this trigger.
      * Defines how the trigger's output should be displayed in preview mode.
      */

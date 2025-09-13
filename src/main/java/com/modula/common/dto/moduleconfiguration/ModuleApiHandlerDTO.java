@@ -1,7 +1,9 @@
 package com.modula.common.dto.moduleconfiguration;
 
+import com.modula.common.domain.moduleconfiguration.ResponseType;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -12,4 +14,6 @@ public class ModuleApiHandlerDTO {
     private String description;
     private String category;
     private String handlerType;
+    private ResponseType responseType;
+    private List<PreviewConfigDTO> previewConfigs;
 }
