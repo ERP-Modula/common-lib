@@ -90,6 +90,14 @@ public class ModuleTrigger {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<InputParameter> inputParameters;
 
+    /**
+     * Type of operation for billing purposes.
+     * Determines the cost in tokens for executing this trigger.
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "operation_type_id")
+    private com.modula.common.domain.billing.OperationType operationType;
+
     // Setter for previewConfigs (needed for service layer)
     public void setPreviewConfigs(List<PreviewConfig> previewConfigs) {
         this.previewConfigs = previewConfigs;

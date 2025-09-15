@@ -12,20 +12,19 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Inheritance(
-        strategy = InheritanceType.JOINED
-)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Step {
     @Id
-//    @GeneratedValue(generator = "UUID")
-//    Генерация на фронте
+    // @GeneratedValue(generator = "UUID")
+    // Генерация на фронте
     private UUID id;
     @Enumerated(EnumType.STRING)
     private StepType type;
     private UUID parentModuleId;
     private int orderNum;
     private UUID handlerId;
-    //  TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id + action/triiger.id)
+    // TODO все на fk, сейчас google-docs:getFilesList (moduleConfig.id +
+    // action/triiger.id)
     private String source;
     private Boolean isValid;
     @ElementCollection
@@ -37,6 +36,14 @@ public class Step {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String, Object> parametersConfiguration;
+
+    /**
+     * Type of operation for billing purposes.
+     * Determines the cost in tokens for executing this step.
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "operation_type_id")
+    private com.modula.common.domain.billing.OperationType operationType;
 
     @Transient
     public StepSource getParsedSource() {

@@ -93,4 +93,12 @@ public class ModuleAction {
      */
     @ManyToMany(cascade = CascadeType.ALL)
     private List<InputParameter> inputParameters;
+
+    /**
+     * Type of operation for billing purposes.
+     * Determines the cost in tokens for executing this action.
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "operation_type_id")
+    private com.modula.common.domain.billing.OperationType operationType;
 }
