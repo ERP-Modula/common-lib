@@ -31,6 +31,11 @@ public enum ParamType {
     CUSTOM_WEBHOOK("webhook"),
     CONDITION("condition"),
 
+    AI_AGENT("ai_agent"),
+    AI_INSTRUMENT("ai_instrument"),
+    AI_KNOWLEDGE_BASE("ai_knowledge_base"),
+    AI_MEMORY("ai_memory"),
+
     /** JSON object with nested structure. */
     OBJECT("object"),
 
