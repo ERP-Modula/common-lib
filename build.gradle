@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.modula'
-version = '1.0.196'
+version = '1.0.197'
 
 java {
 	toolchain {
@@ -18,9 +18,15 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.3"
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.4.3'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -40,8 +46,8 @@ dependencies {
 	implementation("com.sun.mail:jakarta.mail:2.0.1")
 
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
-	implementation 'org.apache.commons:commons-text:1.13.1'
-	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
+	implementation 'org.apache.commons:commons-text'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
 
 }
 
