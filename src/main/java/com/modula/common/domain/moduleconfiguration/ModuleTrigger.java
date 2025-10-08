@@ -1,5 +1,6 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.modula.common.domain.billing.OperationType;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -96,7 +97,7 @@ public class ModuleTrigger {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operation_type_id")
-    private com.modula.common.domain.billing.OperationType operationType;
+    private OperationType operationType;
 
     // Setter for previewConfigs (needed for service layer)
     public void setPreviewConfigs(List<PreviewConfig> previewConfigs) {

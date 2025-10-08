@@ -1,6 +1,5 @@
 package com.modula.common.domain.workflow;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.workflow.step.Edge;
 import com.modula.common.domain.workflow.step.Step;
@@ -29,14 +28,15 @@ public class Workflow {
     private boolean isActive = false;
     @Embedded
     private SchedulerSettings schedulerSettings;
-//    Параметр для polling триггеров, которым необходима дата забора новых объектов
-//    Например, GET https://www.googleapis.com/drive/v3/files?
-//  q=mimeType='application/vnd.google-apps.form' and createdTime > '2024-05-20T00:00:00' (lastPollingTime)
+    // Параметр для polling триггеров, которым необходима дата забора новых объектов
+    // Например, GET https://www.googleapis.com/drive/v3/files?
+    // q=mimeType='application/vnd.google-apps.form' and createdTime >
+    // '2024-05-20T00:00:00' (lastPollingTime)
 
     private ZonedDateTime lastPollingTime;
     private boolean isArchived = false;
     @ElementCollection
-//    TODO должны быть ссыылки на ModulesConfiguration
+    // TODO должны быть ссыылки на ModulesConfiguration
     private List<String> usedModules = new ArrayList<>();
     private ZonedDateTime created;
     private String createdByUserId;
@@ -45,26 +45,25 @@ public class Workflow {
     private int executionCount;
     private ZonedDateTime lastExecution;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "workflow_step_mapping",
-            joinColumns = @JoinColumn(name = "workflow_id"),
-            inverseJoinColumns = @JoinColumn(name = "step_id")
-    )
+    @JoinTable(name = "workflow_step_mapping", joinColumns = @JoinColumn(name = "workflow_id"), inverseJoinColumns = @JoinColumn(name = "step_id"))
     private final List<Step> steps = new ArrayList<>();
-    //  For frontend
+    // For frontend
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "workflow_edge_mapping",
-            joinColumns = @JoinColumn(name = "workflow_id"),
-            inverseJoinColumns = @JoinColumn(name = "edge_id")
-    )
+    @JoinTable(name = "workflow_edge_mapping", joinColumns = @JoinColumn(name = "workflow_id"), inverseJoinColumns = @JoinColumn(name = "edge_id"))
     private List<Edge> edges = new ArrayList<>();
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "workflow_id")
     private final List<WorkflowTriggerSubscription> triggerSubscriptions = new ArrayList<>();
 
-    //    TODO доделать остальные поля
+    /**
+     * ID пользователя, который владеет рабочим пространством, в котором создан
+     * workflow
+     */
+    @Column(name = "workspace_owner_id")
+    private String workspaceOwnerId;
+
+    // TODO доделать остальные поля
     public Workflow(String name, String description) {
         this.name = name;
         this.description = description;
@@ -124,6 +123,14 @@ public class Workflow {
         this.lastExecution = lastExecution;
     }
 
+    public String getWorkspaceOwnerId() {
+        return workspaceOwnerId;
+    }
+
+    public void setWorkspaceOwnerId(String workspaceOwnerId) {
+        this.workspaceOwnerId = workspaceOwnerId;
+    }
+
     public Step getWorkflowFirstStep() {
         return steps.stream()
                 .filter(step -> step.getOrderNum() == 1)
@@ -132,7 +139,7 @@ public class Workflow {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return id + " " + name + " " + enable + " " + isActive + " ";
     }
 }

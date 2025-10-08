@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.modula'
-version = '1.0.188'
+version = '1.0.197'
 
 java {
 	toolchain {

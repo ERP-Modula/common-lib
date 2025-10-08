@@ -1,5 +1,6 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.modula.common.domain.billing.OperationType;
 import com.modula.common.utils.ActionHttpMethodType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -100,5 +101,5 @@ public class ModuleAction {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operation_type_id")
-    private com.modula.common.domain.billing.OperationType operationType;
+    private OperationType operationType;
 }
