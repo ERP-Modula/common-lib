@@ -60,15 +60,15 @@ public class Workflow {
      * ID пользователя, который владеет рабочим пространством, в котором создан
      * workflow
      */
-    @Column(name = "workspace_owner_id")
-    private String workspaceOwnerId;
+    private UUID workspaceOwnerId;
 
     // TODO доделать остальные поля
-    public Workflow(String name, String description) {
+    public Workflow(String name, String description, UUID workspaceOwnerId) {
         this.name = name;
         this.description = description;
         this.created = ZonedDateTime.now();
         this.lastEdit = ZonedDateTime.now();
+        this.workspaceOwnerId = workspaceOwnerId;
     }
 
     public void subscribeWorkflowOnWebhook(WorkflowTriggerSubscription workflowTriggerSubscription) {
@@ -97,6 +97,8 @@ public class Workflow {
             }
         }
         if (existingStepIndex != -1) {
+            var existingStep = steps.get(existingStepIndex);
+            updatedStep.setOperationType(existingStep.getOperationType());
             steps.set(existingStepIndex, updatedStep);
         } else {
             throw new IllegalArgumentException("Step with ID " + stepId + " not found in this workflow.");
@@ -123,11 +125,11 @@ public class Workflow {
         this.lastExecution = lastExecution;
     }
 
-    public String getWorkspaceOwnerId() {
+    public UUID getWorkspaceOwnerId() {
         return workspaceOwnerId;
     }
 
-    public void setWorkspaceOwnerId(String workspaceOwnerId) {
+    public void setWorkspaceOwnerId(UUID workspaceOwnerId) {
         this.workspaceOwnerId = workspaceOwnerId;
     }
 

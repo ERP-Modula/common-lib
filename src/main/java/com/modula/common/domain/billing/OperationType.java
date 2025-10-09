@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
@@ -52,17 +51,6 @@ public class OperationType {
     private OperationCategory category;
 
     /**
-     * Дата создания
-     */
-    @Column(nullable = false)
-    private ZonedDateTime createdAt = ZonedDateTime.now();
-
-    /**
-     * Дата последнего обновления
-     */
-    private ZonedDateTime updatedAt;
-
-    /**
      * Создание нового типа операции
      */
     public OperationType(String name, String description, Long tokenCost, OperationCategory category) {
@@ -70,7 +58,6 @@ public class OperationType {
         this.description = description;
         this.tokenCost = tokenCost;
         this.category = category;
-        this.createdAt = ZonedDateTime.now();
     }
 
     /**
@@ -78,7 +65,6 @@ public class OperationType {
      */
     public void updateCost(Long newTokenCost) {
         this.tokenCost = newTokenCost;
-        this.updatedAt = ZonedDateTime.now();
     }
 
     /**
@@ -86,7 +72,6 @@ public class OperationType {
      */
     public void deactivate() {
         this.isActive = false;
-        this.updatedAt = ZonedDateTime.now();
     }
 
     /**
@@ -94,7 +79,6 @@ public class OperationType {
      */
     public void activate() {
         this.isActive = true;
-        this.updatedAt = ZonedDateTime.now();
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.billing.OperationType;
 import com.modula.common.utils.ActionHttpMethodType;
 import jakarta.persistence.*;
@@ -99,7 +100,8 @@ public class ModuleAction {
      * Type of operation for billing purposes.
      * Determines the cost in tokens for executing this action.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "operation_type_id")
+    @JsonIgnore
     private OperationType operationType;
 }

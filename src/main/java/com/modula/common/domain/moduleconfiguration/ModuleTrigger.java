@@ -1,5 +1,6 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.billing.OperationType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -95,8 +96,9 @@ public class ModuleTrigger {
      * Type of operation for billing purposes.
      * Determines the cost in tokens for executing this trigger.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "operation_type_id")
+    @JsonIgnore
     private OperationType operationType;
 
     // Setter for previewConfigs (needed for service layer)

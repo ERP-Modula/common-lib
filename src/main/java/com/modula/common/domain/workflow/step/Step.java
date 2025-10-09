@@ -43,7 +43,7 @@ public class Step {
      * Type of operation for billing purposes.
      * Determines the cost in tokens for executing this step.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "operation_type_id")
     private OperationType operationType;
 
