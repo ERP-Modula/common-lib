@@ -62,5 +62,6 @@ public class ExternalConnection {
     /**
      * Show which workspace the connection belongs to
      */
+    @Column(name = "external_connection_id")
     private UUID workspaceId;
 }
