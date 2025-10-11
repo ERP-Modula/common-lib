@@ -1,5 +1,7 @@
 package com.modula.common.domain.ai;
 
 public enum MemoryType {
-    POSTGRES
+    POSTGRES,
+    NONE,
+    IN_MEMORY
 }
