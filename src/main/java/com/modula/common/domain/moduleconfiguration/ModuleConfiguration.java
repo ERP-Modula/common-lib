@@ -79,12 +79,18 @@ public class ModuleConfiguration {
     /**
      * List of available API actions provided by the module.
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinTable(name = "module_configuration_actions",
+            joinColumns = @JoinColumn(name = "module_configuration_id"),
+            inverseJoinColumns = @JoinColumn(name = "actions_id"))
     private List<ModuleAction> actions;
 
     /**
      * List of available triggers (webhooks) provided by the module.
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinTable(name = "module_configuration_triggers",
+            joinColumns = @JoinColumn(name = "module_configuration_id"),
+            inverseJoinColumns = @JoinColumn(name = "triggers_id"))
     private List<ModuleTrigger> triggers;
 }

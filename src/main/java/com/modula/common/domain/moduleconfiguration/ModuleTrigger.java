@@ -66,8 +66,9 @@ public class ModuleTrigger {
     /**
      * List of scopes required for this trigger to be invoked.
      */
-    @ElementCollection
-    @Column(nullable = false)
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "module_trigger_scopes", joinColumns = @JoinColumn(name = "module_trigger_id"))
+    @Column(name = "scope", nullable = false)
     private List<String> scopes;
 
     /**
