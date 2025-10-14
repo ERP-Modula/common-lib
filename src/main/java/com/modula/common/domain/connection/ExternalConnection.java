@@ -37,7 +37,11 @@ public class ExternalConnection {
      * Additional connection parameters provided by the user at connection time.
      * Keys usually match {@link ProviderAdditionalParam} keys.
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "external_connection_additional_params",
+            joinColumns = @JoinColumn(name = "external_connection_id"))
+    @MapKeyColumn(name = "param_key")
+    @Column(name = "param_value")
     private Map<String, String> connectionAdditionalParams = new HashMap<>();
 
     /**
