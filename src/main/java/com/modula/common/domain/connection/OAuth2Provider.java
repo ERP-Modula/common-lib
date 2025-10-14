@@ -45,8 +45,10 @@ public class OAuth2Provider extends Provider {
      * Additional query parameters to include in the token request.
      * Example: {"access_type": "offline"}
      */
-    @ElementCollection
-    @CollectionTable(name = "extra_query_params")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "extra_query_params", joinColumns = @JoinColumn(name = "oauth2_provider_id"))
+    @MapKeyColumn(name = "param_key")
+    @Column(name = "param_value")
     private Map<String, String> extraQueryParams;
 
     /**
