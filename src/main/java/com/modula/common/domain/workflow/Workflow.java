@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.workflow.step.Edge;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -24,6 +21,8 @@ public class Workflow {
     private UUID id;
     private String name;
     private String description;
+    @Setter
+    @Getter
     private boolean enable = false;
     private boolean isActive = false;
     @Embedded
