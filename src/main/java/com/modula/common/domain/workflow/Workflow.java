@@ -35,8 +35,10 @@ public class Workflow {
 
     private ZonedDateTime lastPollingTime;
     private boolean isArchived = false;
-    @ElementCollection
     // TODO должны быть ссыылки на ModulesConfiguration
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "workflow_used_modules", joinColumns = @JoinColumn(name = "workflow_id"))
+    @Column(name = "module_name")
     private List<String> usedModules = new ArrayList<>();
     private ZonedDateTime created;
     private String createdByUserId;
