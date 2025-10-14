@@ -71,7 +71,9 @@ public class ModuleConfiguration {
     /**
      * Categories to which the module belongs (e.g., ["crm", "sales"]).
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "module_configuration_categories", joinColumns = @JoinColumn(name = "module_configuration_id"))
+    @Column(name = "category")
     private List<String> categories;
 
     /**
