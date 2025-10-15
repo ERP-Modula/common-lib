@@ -8,6 +8,7 @@ import org.hibernate.type.SqlTypes;
 import com.modula.common.domain.billing.OperationType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class Step {
     private StepMetadata metadata;
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private Map<String, Object> parametersConfiguration;
+    private Map<String, Object> parametersConfiguration = new HashMap<>();
 
     /**
      * Type of operation for billing purposes.
