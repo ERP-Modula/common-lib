@@ -71,7 +71,9 @@ public class ModuleAction {
     /**
      * List of required security scopes for this action (OAuth, API key, etc).
      */
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "module_action_scopes", joinColumns = @JoinColumn(name = "module_action_id"))
+    @Column(name = "scope", nullable = false)
     private List<String> scopes;
 
     /**

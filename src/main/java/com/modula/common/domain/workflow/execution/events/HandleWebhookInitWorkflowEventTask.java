@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class HandleWebhookInitWorkflowEventTask {
+    private boolean isOneTimeRun;
     private Workflow workflow;
     private JsonNode webhookEventOutputPayload;
 }

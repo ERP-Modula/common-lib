@@ -18,12 +18,19 @@ public class SchedulerSettings {
     private ZonedDateTime onceRunningDate; // timestamp
     @Nullable
     private String time;
+
     @Nullable
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "workflow_days", joinColumns = @JoinColumn(name = "workflow_id"))
+    @Column(name = "day")
     private List<Integer> days;
+
     @Nullable
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "workflow_months", joinColumns = @JoinColumn(name = "workflow_id"))
+    @Column(name = "month")
     private List<Integer> months;
+
     @Enumerated(EnumType.STRING)
     private ScheduledType scheduledType;
 }

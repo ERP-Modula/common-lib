@@ -48,6 +48,8 @@ public enum ParamType {
     /** File name (not the file itself). */
     FILENAME("filename"),
 
+    FILE("file"),
+
     /** Numeric value (integer or floating point). */
     NUMBER("number"),
 

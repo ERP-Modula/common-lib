@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modula.common.domain.workflow.step.Edge;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -24,6 +21,8 @@ public class Workflow {
     private UUID id;
     private String name;
     private String description;
+    @Setter
+    @Getter
     private boolean enable = false;
     private boolean isActive = false;
     @Embedded
@@ -35,8 +34,10 @@ public class Workflow {
 
     private ZonedDateTime lastPollingTime;
     private boolean isArchived = false;
-    @ElementCollection
     // TODO должны быть ссыылки на ModulesConfiguration
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "workflow_used_modules", joinColumns = @JoinColumn(name = "workflow_id"))
+    @Column(name = "module_name")
     private List<String> usedModules = new ArrayList<>();
     private ZonedDateTime created;
     private String createdByUserId;

@@ -31,8 +31,12 @@ public class WorkflowInstance {
     @JoinTable(name = "workflow_instance_step_mapping", joinColumns = @JoinColumn(name = "workflow_instance_id"), inverseJoinColumns = @JoinColumn(name = "step_id"))
     private List<Step> steps;
 
-    // TODO просто json ?
-    @OneToMany(cascade = { CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST }, orphanRemoval = true)
+    @OneToMany(
+            cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST},
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "workflow_instance_id")
     private List<IntegrationOutputObject> context;
 
     public UUID getFirstStepId() {
