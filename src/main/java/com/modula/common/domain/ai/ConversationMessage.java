@@ -24,7 +24,7 @@ public class ConversationMessage {
     private UUID id;
 
     @Column(nullable = false, updatable = false)
-    private UUID threadId;
+    private String threadId;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
