@@ -73,4 +73,7 @@ public class Provider {
     @Column(name = "auth_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private AuthType authType;
+
+    @Column(name = "category")
+    private String category;
 }
