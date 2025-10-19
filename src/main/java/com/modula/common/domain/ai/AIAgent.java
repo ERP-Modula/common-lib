@@ -1,5 +1,6 @@
 package com.modula.common.domain.ai;
 
+import com.modula.common.domain.connection.ExternalConnection;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,10 @@ public class AIAgent {
 
     @Column(nullable = false)
     private String llmModelName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "external_connection_id")
+    private ExternalConnection externalConnection;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "conversation_memory_id")

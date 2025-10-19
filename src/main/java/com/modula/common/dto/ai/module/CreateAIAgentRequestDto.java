@@ -11,6 +11,7 @@ public class CreateAIAgentRequestDto {
     private String systemPrompt;
     private String llmProvider;
     private String llmModelName;
+    private UUID connectionId;
     private UUID conversationMemoryId;
     private Set<UUID> knowledgeBaseIds;
     private Set<UUID> instrumentIds;

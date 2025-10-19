@@ -12,6 +12,7 @@ public class AIAgentDto {
     private String systemPrompt;
     private String llmProvider;
     private String llmModelName;
+    private UUID connectionId;
     private ConversationMemoryDto conversationMemory;
     private Set<KnowledgeBaseDto> knowledgeBases;
     private Set<InstrumentDto> instruments;
