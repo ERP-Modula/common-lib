@@ -23,13 +23,13 @@ public class SchedulerSettings {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "workflow_days", joinColumns = @JoinColumn(name = "workflow_id"))
     @Column(name = "day")
-    private List<Integer> days;
+    private List<Integer> days; 
 
     @Nullable
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "workflow_months", joinColumns = @JoinColumn(name = "workflow_id"))
     @Column(name = "month")
-    private List<Integer> months;
+    private List<Integer> months; 
 
     @Enumerated(EnumType.STRING)
     private ScheduledType scheduledType;
