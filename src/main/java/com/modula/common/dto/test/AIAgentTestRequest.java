@@ -8,7 +8,7 @@ import java.util.UUID;
 public class AIAgentTestRequest {
     private String sessionId;
     private UUID agentId;
-    private UUID threadId;
+    private String threadId;
     private String prompt;
     private Map<String, Object> llmParams;
 }

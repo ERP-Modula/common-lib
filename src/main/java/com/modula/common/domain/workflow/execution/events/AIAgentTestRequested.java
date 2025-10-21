@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AIAgentTestRequested {
     private String sessionId;
-    private UUID threadId;
+    private String threadId;
     private String prompt;
     private AIAgentDto agentConfig;
     private Map<String, Object> llmParams;
