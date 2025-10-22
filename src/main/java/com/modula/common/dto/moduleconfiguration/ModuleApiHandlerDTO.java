@@ -1,5 +1,6 @@
 package com.modula.common.dto.moduleconfiguration;
 
+import com.modula.common.domain.moduleconfiguration.InputParameter;
 import com.modula.common.domain.moduleconfiguration.ResponseType;
 import lombok.Data;
 
@@ -16,4 +17,6 @@ public class ModuleApiHandlerDTO {
     private String handlerType;
     private ResponseType responseType;
     private List<PreviewConfigDTO> previewConfigs;
+    private String documentationSource;
+    private List<InputParameter> inputParameters;
 }
