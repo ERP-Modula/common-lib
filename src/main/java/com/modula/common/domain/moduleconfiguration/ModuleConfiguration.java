@@ -24,14 +24,14 @@ public class ModuleConfiguration {
         /**
          * List of available module actions provided by the module.
          */
-        @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+        @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
         @JoinTable(name = "module_configuration_actions", joinColumns = @JoinColumn(name = "module_configuration_id"), inverseJoinColumns = @JoinColumn(name = "actions_id"))
         private List<ModuleAction> actions;
 
         /**
          * List of available module triggers (webhooks) provided by the module.
          */
-        @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+        @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
         @JoinTable(name = "module_configuration_triggers", joinColumns = @JoinColumn(name = "module_configuration_id"), inverseJoinColumns = @JoinColumn(name = "triggers_id"))
         private List<ModuleTrigger> triggers;
 }
