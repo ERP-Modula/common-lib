@@ -13,5 +13,6 @@ public class ConnectionLifecycleEvent {
     private UUID workspaceId;
     private ConnectionEventType eventType;
     private String moduleName;
+    private String moduleVersion;
     private ExternalConnectionDto connection;
 }
