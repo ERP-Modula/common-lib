@@ -28,6 +28,7 @@ import java.util.UUID;
 public abstract class ExternalConnectionDto implements ExternalConnectionResponse {
     private UUID id;
     private String name;
+    private String moduleVersion;
     private UUID providerId;
     private UUID userId;
     private UUID workspaceId;
