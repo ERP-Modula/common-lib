@@ -85,6 +85,6 @@ public class Provider {
      * При создании подключения будет выполнен тестовый запрос с использованием
      * этого action.
      */
-    @Column(name = "test_action_id")
+    @Column(name = "test_action_id", nullable = false)
     private UUID testActionId;
 }

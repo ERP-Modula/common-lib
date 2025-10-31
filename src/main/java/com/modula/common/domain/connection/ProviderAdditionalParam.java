@@ -52,6 +52,17 @@ public class ProviderAdditionalParam {
     private String helpUrl;
 
     /**
+     * Optional input template for the field.
+     * Used to display a formatted input where only the placeholder part is
+     * editable.
+     * Format: "{prefix}{value}{suffix}" where {value} represents the editable part.
+     * Example: "https://{value}.retailcrm.ru" will display "https://" (fixed) +
+     * [user input] + ".retailcrm.ru" (fixed)
+     */
+    @Column(name = "input_template")
+    private String inputTemplate;
+
+    /**
      * The associated provider that this parameter belongs to.
      * Ignored in JSON to avoid recursion or exposing sensitive configuration.
      */
