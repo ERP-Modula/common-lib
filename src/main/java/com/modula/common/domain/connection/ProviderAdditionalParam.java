@@ -34,10 +34,22 @@ public class ProviderAdditionalParam {
     private String label;
 
     /**
-     * Optional description or help text for the user (e.g., "Enter your Bitrix24 subdomain").
+     * Optional description or help text for the user (e.g., "Enter your Bitrix24
+     * subdomain").
      */
     @Column(name = "description")
     private String description;
+    /**
+     * Optional tooltip text for the user (e.g., "Enter your Bitrix24 subdomain").
+     */
+    @Column(name = "help_tooltip_text")
+    private String helpTooltipText;
+
+    /**
+     * Optional URL to a help page for the user (e.g., "https://example.com/help").
+     */
+    @Column(name = "help_url")
+    private String helpUrl;
 
     /**
      * The associated provider that this parameter belongs to.

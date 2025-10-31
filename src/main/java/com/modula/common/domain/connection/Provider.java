@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Represents an external service provider (e.g., Bitrix24, Google) that can be connected
+ * Represents an external service provider (e.g., Bitrix24, Google) that can be
+ * connected
  * via OAuth2, API keys, or other authentication mechanisms.
-
+ * 
  * Each provider includes metadata for display, authorization configuration, and
  * optional UI hints or alerts to guide users through the integration process.
  */
@@ -41,13 +42,15 @@ public class Provider {
     private String label;
 
     /**
-     * Description of the provider shown to users, including integration instructions.
+     * Description of the provider shown to users, including integration
+     * instructions.
      */
     @Column(name = "description")
     private String description;
 
     /**
-     * Alert message shown to users before connecting the provider (e.g., "Add app to Bitrix24 first").
+     * Alert message shown to users before connecting the provider (e.g., "Add app
+     * to Bitrix24 first").
      */
     @Column(name = "alert_notification", length = 20000)
     private String alertNotification;
@@ -64,7 +67,7 @@ public class Provider {
      * May include placeholders like {domain}, {client_id}, etc.
      * Example: "https://{domain}/oauth/authorize"
      */
-    @Column(name = "code_uri", nullable = false)
+    @Column(name = "code_uri")
     private String codeUri;
 
     /**
@@ -76,4 +79,12 @@ public class Provider {
 
     @Column(name = "category")
     private String category;
+
+    /**
+     * ID тестового module action для проверки валидности подключения.
+     * При создании подключения будет выполнен тестовый запрос с использованием
+     * этого action.
+     */
+    @Column(name = "test_action_id")
+    private UUID testActionId;
 }
