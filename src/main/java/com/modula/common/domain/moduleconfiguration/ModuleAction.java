@@ -107,4 +107,23 @@ public class ModuleAction {
     @JoinColumn(name = "operation_type_id")
     @JsonIgnore
     private OperationType operationType;
+
+    @Column(name = "supports_pagination", nullable = false)
+    private boolean supportsPagination = false;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "pagination_strategy", nullable = false)
+    private PaginationStrategy paginationStrategy = PaginationStrategy.NONE;
+
+    @Column(name = "items_json_path")       private String itemsJsonPath;
+    @Column(name = "next_page_json_path")   private String nextPageJsonPath;
+    @Column(name = "next_link_header_name") private String nextLinkHeaderName;
+
+    @Column(name = "default_page_size") private Integer defaultPageSize;
+    @Column(name = "max_page_size")     private Integer maxPageSize;
+
+    @Column(name = "limit_param_name")  private String limitParamName;
+    @Column(name = "offset_param_name") private String offsetParamName;
+    @Column(name = "page_param_name")   private String pageParamName;
+    @Column(name = "cursor_param_name") private String cursorParamName;
 }
