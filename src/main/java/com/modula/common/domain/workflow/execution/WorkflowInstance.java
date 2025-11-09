@@ -15,21 +15,28 @@ public class WorkflowInstance {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private UUID workflowId;
     private UUID currentStepId;
     private Boolean isRoot;
     private Timestamp startTime;
     private Timestamp endTime;
     private Boolean isDone = false;
+
     @Enumerated(EnumType.STRING)
     private WorkflowInstanceStatus status;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<WorkflowInstance> sub;
+    @JoinColumn(name = "parent_instance_id")
+    private List<WorkflowInstance> sub = new java.util.ArrayList<>();
 
     @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
-    @JoinTable(name = "workflow_instance_step_mapping", joinColumns = @JoinColumn(name = "workflow_instance_id"), inverseJoinColumns = @JoinColumn(name = "step_id"))
-    private List<Step> steps;
+    @JoinTable(
+            name = "workflow_instance_step_mapping",
+            joinColumns = @JoinColumn(name = "workflow_instance_id"),
+            inverseJoinColumns = @JoinColumn(name = "step_id")
+    )
+    private List<Step> steps = new java.util.ArrayList<>();
 
     @OneToMany(
             cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST},
@@ -37,10 +44,21 @@ public class WorkflowInstance {
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "workflow_instance_id")
-    private List<IntegrationOutputObject> context;
+    private List<IntegrationOutputObject> context = new java.util.ArrayList<>();
 
     public UUID getFirstStepId() {
-        Optional<Step> o = steps.stream().filter(s -> s.getPrevStepId().isEmpty()).findAny();
-        return o.map(Step::getId).orElse(null);
+        return steps.stream()
+                .filter(s -> s.getPrevStepId() == null)
+                .findAny()
+                .map(Step::getId)
+                .orElse(null);
+    }
+
+    public List<WorkflowInstance> getSubSafe() {
+        if (sub == null) sub = new java.util.ArrayList<>();
+        return sub;
+    }
+    public void addSub(WorkflowInstance child) {
+        getSubSafe().add(child);
     }
 }
