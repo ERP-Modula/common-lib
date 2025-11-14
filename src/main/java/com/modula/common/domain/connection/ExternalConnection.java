@@ -38,8 +38,7 @@ public class ExternalConnection {
      * Keys usually match {@link ProviderAdditionalParam} keys.
      */
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "external_connection_additional_params",
-            joinColumns = @JoinColumn(name = "external_connection_id"))
+    @CollectionTable(name = "external_connection_additional_params", joinColumns = @JoinColumn(name = "external_connection_id"))
     @MapKeyColumn(name = "param_key")
     @Column(name = "param_value")
     private Map<String, String> connectionAdditionalParams = new HashMap<>();
@@ -68,4 +67,11 @@ public class ExternalConnection {
      */
     @Column(name = "external_connection_id")
     private UUID workspaceId;
+
+    /**
+     * Indicates whether this is a system default connection created for users
+     * to use pre-configured connections. Default is false.
+     */
+    @Column(name = "is_default", nullable = false)
+    private boolean isDefault = false;
 }
