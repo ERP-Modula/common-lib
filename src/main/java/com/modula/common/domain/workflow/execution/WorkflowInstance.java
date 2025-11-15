@@ -1,8 +1,10 @@
 package com.modula.common.domain.workflow.execution;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.modula.common.domain.workflow.step.Step;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -26,9 +28,19 @@ public class WorkflowInstance {
     @Enumerated(EnumType.STRING)
     private WorkflowInstanceStatus status;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "parent_instance_id")
+    @OneToMany(
+            mappedBy = "parent",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @ToString.Exclude
     private List<WorkflowInstance> sub = new java.util.ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_instance_id")
+    @JsonBackReference
+    @ToString.Exclude
+    private WorkflowInstance parent;
 
     @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     @JoinTable(
@@ -60,5 +72,6 @@ public class WorkflowInstance {
     }
     public void addSub(WorkflowInstance child) {
         getSubSafe().add(child);
+        child.setParent(this);
     }
 }
