@@ -40,8 +40,12 @@ public class OAuth2ExternalConnection extends ExternalConnection {
     /**
      * Set of scopes granted by the provider (e.g., "tasks.read", "users.write").
      */
-    @ElementCollection
-    @CollectionTable(name = "available_scope")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "available_scope",
+            joinColumns = @JoinColumn(name = "oauth2_external_connection_id")
+    )
+    @Column(name = "scope")
     private Set<String> scopes;
 
     /**
