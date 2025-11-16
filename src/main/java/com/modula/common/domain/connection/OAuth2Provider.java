@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Represents an OAuth2-specific provider, extending the base {@link Provider} entity.
@@ -70,4 +71,12 @@ public class OAuth2Provider extends Provider {
     @Column(name = "request_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private RequestType requestType;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "provider_default_scopes",
+            joinColumns = @JoinColumn(name = "provider_id")
+    )
+    @Column(name = "scope")
+    private Set<String> defaultScopes;
 }
