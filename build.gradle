@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.modula' 
-version = '1.0.271'
+version = '1.0.272'
 
 java {
 	toolchain {
@@ -28,6 +28,9 @@ dependencies {
 	implementation 'org.springframework:spring-context'
 	implementation 'org.springframework.data:spring-data-jpa'
 	implementation 'org.hibernate.orm:hibernate-core'
+
+	implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.6.1'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
