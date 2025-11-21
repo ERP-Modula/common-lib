@@ -60,8 +60,8 @@ public class WorkflowInstance {
 
     public UUID getFirstStepId() {
         return steps.stream()
-                .filter(s -> s.getPrevStepId() == null)
-                .findAny()
+                .filter(s -> s.getOrderNum() == 1)
+                .findFirst()
                 .map(Step::getId)
                 .orElse(null);
     }

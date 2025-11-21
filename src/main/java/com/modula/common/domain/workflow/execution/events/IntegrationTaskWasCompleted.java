@@ -20,5 +20,4 @@ public class IntegrationTaskWasCompleted {
     @Nullable
     private String testWebsocketSessionId;
     private JsonNode outputTaskPayload;
-//    private IntegrationOutputObject integrationOutput;
 }
