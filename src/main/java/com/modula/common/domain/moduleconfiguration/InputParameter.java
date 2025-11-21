@@ -1,9 +1,12 @@
 package com.modula.common.domain.moduleconfiguration;
 
+import com.modula.common.domain.moduleconfiguration.parameter.ParameterDependency;
 import jakarta.persistence.*;
 import lombok.Getter;
-
+import org.hibernate.annotations.Type;
+import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -91,4 +94,29 @@ public class InputParameter {
      * Field name inside each item for the option label (e.g., "id" or "name").
      */
     private String optionsLabelField;
+
+    /**
+     * ID действия (ModuleAction), которое нужно выполнить для получения динамических опций.
+     * Более гибкая альтернатива optionsEndpointUrl.
+     */
+    @Column(name = "options_action_id")
+    private UUID optionsActionId;
+
+    /**
+     * Определяет, какие параметры из UI нужно передать в тело/параметры
+     * запроса для получения динамических опций.
+     * Формат: { "параметр_в_запросе": "${имя_параметра_в_UI}" }
+     * Пример: { "spreadsheetId": "${spreadsheetId}" }
+     */
+    @Type(JsonBinaryType.class)
+    @Column(name = "options_request_params", columnDefinition = "jsonb")
+    private Map<String, String> optionsRequestParams;
+
+    /**
+     * Список правил, определяющих видимость и обязательность этого параметра
+     * в зависимости от значений других параметров.
+     */
+    @Type(JsonBinaryType.class)
+    @Column(columnDefinition = "jsonb")
+    private List<ParameterDependency> dependencies;
 }
