@@ -145,4 +145,7 @@ public class Workflow {
     public String toString() {
         return id + " " + name + " " + enable + " " + isActive + " ";
     }
+    public void setSchedulerSettings(SchedulerSettings schedulerSettings) {
+        this.schedulerSettings = schedulerSettings;
+    }
 }
