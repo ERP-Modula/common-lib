@@ -119,4 +119,11 @@ public class InputParameter {
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb")
     private List<ParameterDependency> dependencies;
+
+    /**
+     * Порядок отображения параметра в UI.
+     * Параметры с меньшим значением order отображаются первыми.
+     */
+    @Column(nullable = false)
+    private Integer order;
 }
