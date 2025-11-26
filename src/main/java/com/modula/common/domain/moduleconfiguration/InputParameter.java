@@ -43,10 +43,21 @@ public class InputParameter {
     private String help;
 
     /**
-     * Type of the parameter (e.g., STRING, NUMBER, SELECT).
+     * Type of the parameter (e.g., STRING, NUMBER, SELECT, ARRAY).
      */
     @Enumerated(EnumType.STRING)
     private ParamType type;
+
+    /**
+     * Type of elements in the array.
+     * Used when type = ARRAY to specify what type of values the array contains
+     * (e.g., STRING for array of strings, NUMBER for array of numbers, OBJECT for array of objects).
+     * If arrayItemType = OBJECT, use spec to define the structure of objects in the array.
+     * If arrayItemType = ARRAY, this represents nested arrays (array of arrays).
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "array_item_type")
+    private ParamType arrayItemType;
 
     /**
      * Optional list of selectable options.

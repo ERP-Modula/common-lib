@@ -98,7 +98,7 @@ public class ModuleTrigger {
      * Determines the cost in tokens for executing this trigger.
      */
     @ManyToOne()
-    @JoinColumn(name = "operation_type_id")
+    @JoinColumn(name = "operation_type_id", nullable = false)
     @JsonIgnore
     private OperationType operationType;
 
