@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.modula.common.connections.dto.connection.impl.ApiKeyExternalConnectionDto;
 import com.modula.common.connections.dto.connection.impl.BasicExternalConnectionDto;
+import com.modula.common.connections.dto.connection.impl.NoneExternalConnectionDto;
 import com.modula.common.connections.dto.connection.impl.OAuth2ExternalConnectionDto;
 import com.modula.common.connections.dto.connection.util.ExternalConnectionResponse;
 import lombok.Data;
@@ -23,7 +24,8 @@ import java.util.UUID;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = OAuth2ExternalConnectionDto.class, name = "OAUTH2"),
         @JsonSubTypes.Type(value = ApiKeyExternalConnectionDto.class, name = "API_KEY"),
-        @JsonSubTypes.Type(value = BasicExternalConnectionDto.class, name = "BASIC")
+        @JsonSubTypes.Type(value = BasicExternalConnectionDto.class, name = "BASIC"),
+        @JsonSubTypes.Type(value = NoneExternalConnectionDto.class, name = "NONE")
 })
 public abstract class ExternalConnectionDto implements ExternalConnectionResponse {
     private UUID id;
