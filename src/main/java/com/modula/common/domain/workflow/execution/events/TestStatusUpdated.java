@@ -16,4 +16,14 @@ public class TestStatusUpdated {
     @Enumerated(EnumType.STRING)
     private TestStatus status;
     private JsonNode payload;
+
+    // Добавляем поле для передачи времени таймера (в секундах)
+    private Integer timeout;
+
+    // Конструктор для обратной совместимости или простых статусов (без таймера)
+    public TestStatusUpdated(UUID sessionId, TestStatus status, JsonNode payload) {
+        this.sessionId = sessionId;
+        this.status = status;
+        this.payload = payload;
+    }
 }
