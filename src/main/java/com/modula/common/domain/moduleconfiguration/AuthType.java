@@ -27,7 +27,9 @@ public enum AuthType {
      * API key authentication.
      * Useful for systems where token-based auth is sufficient.
      */
-    API_KEY("api_key");
+    API_KEY("api_key"),
+
+    NONE("none");
 
     /**
      * The string representation of the authentication type,
