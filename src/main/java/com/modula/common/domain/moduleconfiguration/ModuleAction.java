@@ -104,9 +104,8 @@ public class ModuleAction {
      * Determines the cost in tokens for executing this action.
      */
     @ManyToOne()
-    @JoinColumn(name = "operation_type_id")
+    @JoinColumn(name = "operation_type_id", nullable = false)
     @JsonIgnore
-    @Column(nullable = false)
     private OperationType operationType;
 
     @Column(name = "supports_pagination", nullable = false)

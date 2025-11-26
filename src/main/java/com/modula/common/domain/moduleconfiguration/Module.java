@@ -63,7 +63,7 @@ public class Module {
    * Indicates if the module is integration or created by modula.
    */
   @Column(nullable = false)
-  private Boolean isCreatedBySystem = false;
+  private Boolean isInternalModule = false;
 
   /**
    * Theme color of the module (e.g., "blue", "#FF5733").
