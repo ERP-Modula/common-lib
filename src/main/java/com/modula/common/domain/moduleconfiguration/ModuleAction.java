@@ -106,6 +106,7 @@ public class ModuleAction {
     @ManyToOne()
     @JoinColumn(name = "operation_type_id")
     @JsonIgnore
+    @Column(nullable = false)
     private OperationType operationType;
 
     @Column(name = "supports_pagination", nullable = false)

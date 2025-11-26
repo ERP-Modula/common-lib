@@ -100,6 +100,7 @@ public class ModuleTrigger {
     @ManyToOne()
     @JoinColumn(name = "operation_type_id")
     @JsonIgnore
+    @Column(nullable = false)
     private OperationType operationType;
 
     // Setter for previewConfigs (needed for service layer)

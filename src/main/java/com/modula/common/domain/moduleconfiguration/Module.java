@@ -59,6 +59,11 @@ public class Module {
    * Indicates if the module is publicly visible.
    */
   private Boolean isPublic;
+    /**
+   * Indicates if the module is integration or created by modula.
+   */
+  @Column(nullable = false)
+  private Boolean isCreatedBySystem = false;
 
   /**
    * Theme color of the module (e.g., "blue", "#FF5733").
