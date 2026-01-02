@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.UUID;
 
 /**
  * Тип операции, определяющий стоимость выполнения различных действий
  */
 @Entity
+@Table(name = "operation_type")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -38,6 +38,12 @@ public class OperationType {
      */
     @Column(nullable = false)
     private Long tokenCost;
+
+    /**
+     * Код метрики в Lago
+     */
+    @Column(name = "lago_code")
+    private String lagoCode;
 
     /**
      * Активен ли тип операции
