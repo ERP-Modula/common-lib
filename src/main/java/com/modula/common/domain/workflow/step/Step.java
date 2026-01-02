@@ -45,9 +45,8 @@ public class Step {
      * Type of operation for billing purposes.
      * Determines the cost in tokens for executing this step.
      */
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "operation_type_id")
-    private OperationType operationType;
+    @Column(name = "operation_key")
+    private String operationKey;
 
     @Transient
     public StepSource getParsedSource() {

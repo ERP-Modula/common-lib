@@ -97,10 +97,8 @@ public class ModuleTrigger {
      * Type of operation for billing purposes.
      * Determines the cost in tokens for executing this trigger.
      */
-    @ManyToOne()
-    @JoinColumn(name = "operation_type_id", nullable = false)
-    @JsonIgnore
-    private OperationType operationType;
+    @Column(name = "operation_key")
+    private String operationKey;
 
     // Setter for previewConfigs (needed for service layer)
     public void setPreviewConfigs(List<PreviewConfig> previewConfigs) {
