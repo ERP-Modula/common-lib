@@ -99,7 +99,7 @@ public class Workflow {
         }
         if (existingStepIndex != -1) {
             var existingStep = steps.get(existingStepIndex);
-            updatedStep.setOperationType(existingStep.getOperationType());
+            updatedStep.setOperationKey(existingStep.getOperationKey());
             steps.set(existingStepIndex, updatedStep);
         } else {
             throw new IllegalArgumentException("Step with ID " + stepId + " not found in this workflow.");
